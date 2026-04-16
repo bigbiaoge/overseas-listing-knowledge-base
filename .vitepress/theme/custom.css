@@ -1,0 +1,101 @@
+/**
+ * 自定义样式
+ */
+
+/* 导航栏样式 */
+.VPNav {
+  background: linear-gradient(135deg, #1a73e8 0%, #0d47a1 100%) !important;
+}
+
+.VPNav .title {
+  color: white !important;
+  font-weight: 600;
+}
+
+/* 主页卡片样式 */
+.VPHero .name {
+  background: linear-gradient(135deg, #1a73e8, #0d47a1) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+}
+
+.VPHero .text {
+  background: linear-gradient(135deg, #1a73e8, #0d47a1) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+}
+
+/* 特性卡片悬停效果 */
+.VPFeature {
+  transition: transform 0.3s ease, box-shadow 0.3s ease !important;
+}
+
+.VPFeature:hover {
+  transform: translateY(-5px) !important;
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12) !important;
+}
+
+/* 表格样式 */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1rem 0;
+  font-size: 0.95rem;
+}
+
+th, td {
+  padding: 0.75rem 1rem;
+  text-align: left;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+th {
+  background: #f8f9fa;
+  font-weight: 600;
+  color: #374151;
+}
+
+tr:hover {
+  background: #f8f9fa;
+}
+
+/* 代码块样式 */
+div[class*='language-'] {
+  border-radius: 8px !important;
+}
+
+/* 侧边栏样式 */
+.VPSidebarItem .text {
+  font-size: 0.9rem;
+}
+
+/* 滚动条样式 */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+/* 响应式调整 */
+@media (max-width: 768px) {
+  .VPHero .name {
+    font-size: 2rem !important;
+  }
+  
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
