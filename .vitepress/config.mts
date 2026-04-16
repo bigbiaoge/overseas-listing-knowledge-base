@@ -5,6 +5,11 @@ export default defineConfig({
   description: '证监会境外发行上市备案补充材料要求知识库 - 为资本市场非诉律师及相关从业人员提供监管关注点参考',
   lang: 'zh-CN',
   
+  // 明确指定源目录和输出目录
+  srcDir: '.',
+  outDir: 'dist',
+  cacheDir: '.vitepress/cache',
+  
   head: [
     ['link', { rel: 'icon', href: '/favicon.ico' }],
     ['meta', { name: 'author', content: 'CSRC Knowledge Base' }],
