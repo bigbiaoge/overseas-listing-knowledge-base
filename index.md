@@ -16,14 +16,19 @@ hero:
 features:
   - icon: 📅
     title: 按时间顺序
-    details: 按月份整理所有备案补充材料要求，便于追踪监管动态
+    details: 按年份整理所有备案补充材料要求，便于追踪监管动态
     link: /timeline/2026
     linkText: 浏览时间线
   - icon: 📋
     title: 按问题类型
     details: 按问题类型分类整理，便于横向对比分析监管关注点
-    link: /types/shareholders
+    link: /types/股东-实际控制人
     linkText: 查看类型
+  - icon: 📚
+    title: 规则库
+    details: 收录证监会境外发行上市相关核心法规及监管规则适用指引
+    link: /rules/
+    linkText: 浏览规则
   - icon: 📊
     title: 统计分析
     details: 可视化展示问题类型分布、时间趋势等统计数据
@@ -48,158 +53,118 @@ features:
       <div class="stat-label">问题总数</div>
     </div>
     <div class="stat-card">
-      <div class="stat-value">64</div>
-      <div class="stat-label">公示期数</div>
+      <div class="stat-value">8</div>
+      <div class="stat-label">问题类型</div>
     </div>
     <div class="stat-card">
-      <div class="stat-value">2023-2026</div>
-      <div class="stat-label">数据时间范围</div>
+      <div class="stat-value">4</div>
+      <div class="stat-label">覆盖年份</div>
     </div>
   </div>
 </div>
 
-<div class="hot-topics">
-  <h2>🔥 热点问题类型 TOP 5</h2>
-  <table class="topic-table">
-    <thead>
-      <tr>
-        <th>排名</th>
-        <th>问题类型</th>
-        <th>数量</th>
-        <th>占比</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>🥇</td>
-        <td>股东/实际控制人</td>
-        <td>373</td>
-        <td>24.0%</td>
-      </tr>
-      <tr>
-        <td>🥈</td>
-        <td>股权变动/代持</td>
-        <td>296</td>
-        <td>19.0%</td>
-      </tr>
-      <tr>
-        <td>🥉</td>
-        <td>其他</td>
-        <td>270</td>
-        <td>17.4%</td>
-      </tr>
-      <tr>
-        <td>4</td>
-        <td>业务经营/经营范围</td>
-        <td>194</td>
-        <td>12.5%</td>
-      </tr>
-      <tr>
-        <td>5</td>
-        <td>外汇/境外投资</td>
-        <td>81</td>
-        <td>5.2%</td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-
-<div class="data-source">
-  <h2>📚 数据来源</h2>
-  <ul>
-    <li><strong>官网地址</strong>：<a href="https://www.csrc.gov.cn/csrc/c100098/common_list.shtml" target="_blank">中国证监会官网 - 境外发行上市类</a></li>
-    <li><strong>数据范围</strong>：2023年4月至今的备案补充材料要求公示</li>
-    <li><strong>更新时间</strong>：每周定期更新</li>
-  </ul>
-</div>
-
-<style scoped>
+<style>
 .stats-container {
   margin: 3rem 0;
-  padding: 1.5rem;
-  background: linear-gradient(135deg, #f5f7fa 0%, #e4e8ec 100%);
-  border-radius: 12px;
+  text-align: center;
 }
-
 .stats-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  gap: 1rem;
-  margin-top: 1rem;
+  gap: 1.5rem;
+  margin-top: 1.5rem;
 }
-
 .stat-card {
-  background: white;
+  background: var(--vp-c-bg-soft);
+  border-radius: 12px;
   padding: 1.5rem;
-  border-radius: 8px;
-  text-align: center;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  transition: transform 0.2s;
 }
-
+.stat-card:hover {
+  transform: translateY(-2px);
+}
 .stat-value {
-  font-size: 2rem;
-  font-weight: bold;
-  color: #1a73e8;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--vp-c-brand-1);
 }
-
 .stat-label {
-  margin-top: 0.5rem;
-  color: #666;
   font-size: 0.9rem;
-}
-
-.hot-topics {
-  margin: 2rem 0;
-}
-
-.topic-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 1rem;
-  background: white;
-  border-radius: 8px;
-  overflow: hidden;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-}
-
-.topic-table th,
-.topic-table td {
-  padding: 1rem;
-  text-align: left;
-  border-bottom: 1px solid #eee;
-}
-
-.topic-table th {
-  background: #f8f9fa;
-  font-weight: 600;
-}
-
-.topic-table tr:last-child td {
-  border-bottom: none;
-}
-
-.data-source {
-  margin: 2rem 0;
-  padding: 1.5rem;
-  background: #f8f9fa;
-  border-radius: 8px;
-}
-
-.data-source ul {
-  list-style: none;
-  padding: 0;
-}
-
-.data-source li {
-  padding: 0.5rem 0;
-}
-
-.data-source a {
-  color: #1a73e8;
-  text-decoration: none;
-}
-
-.data-source a:hover {
-  text-decoration: underline;
+  color: var(--vp-c-text-2);
+  margin-top: 0.5rem;
 }
 </style>
+
+## 🚀 快速入口
+
+<div class="quick-links">
+  <a href="/timeline/2026" class="quick-link-card">
+    <span class="ql-icon">📅</span>
+    <span class="ql-title">2026年案例</span>
+    <span class="ql-desc">最新备案补充材料要求</span>
+  </a>
+  <a href="/timeline/2025" class="quick-link-card">
+    <span class="ql-icon">📆</span>
+    <span class="ql-title">2025年案例</span>
+    <span class="ql-desc">全年备案情况汇总</span>
+  </a>
+  <a href="/types/股东-实际控制人" class="quick-link-card">
+    <span class="ql-icon">👥</span>
+    <span class="ql-title">股东/实际控制人</span>
+    <span class="ql-desc">最常见问题类型</span>
+  </a>
+  <a href="/rules/" class="quick-link-card">
+    <span class="ql-icon">📖</span>
+    <span class="ql-title">规则库</span>
+    <span class="ql-desc">核心法规及指引</span>
+  </a>
+</div>
+
+<style>
+.quick-links {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+  margin: 2rem 0;
+}
+.quick-link-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1.5rem;
+  background: var(--vp-c-bg-soft);
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 12px;
+  text-decoration: none;
+  transition: all 0.2s;
+}
+.quick-link-card:hover {
+  border-color: var(--vp-c-brand-1);
+  transform: translateY(-2px);
+}
+.ql-icon {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+.ql-title {
+  font-weight: 600;
+  color: var(--vp-c-text-1);
+  margin-bottom: 0.25rem;
+}
+.ql-desc {
+  font-size: 0.85rem;
+  color: var(--vp-c-text-2);
+}
+</style>
+
+## 📖 使用说明
+
+本知识库收录了 **中国证监会** 自2023年以来公示的境外发行上市备案补充材料要求，按时间和问题类型两个维度进行整理，帮助资本市场从业者快速了解监管关注点。
+
+::: info 数据来源
+所有数据均来源于[中国证监会官网](https://www.csrc.gov.cn)公开信息
+:::
+
+::: tip 建议浏览器
+推荐使用 Chrome、Firefox、Safari 或 Edge 浏览器访问以获得最佳体验
+:::
