@@ -28,9 +28,7 @@ export default defineConfig({
         text: '按时间顺序',
         items: [
           { text: '2026年', link: '/timeline/2026' },
-          { text: '2025年', link: '/timeline/2025' },
-          { text: '2024年', link: '/timeline/2024' },
-          { text: '2023年', link: '/timeline/2023' }
+          { text: '2025年', link: '/timeline/2025' }
         ]
       },
       { 
