@@ -45,15 +45,15 @@ features:
   <h2>📈 总体统计</h2>
   <div class="stats-grid">
     <div class="stat-card">
-      <div class="stat-value">429</div>
+      <div class="stat-value">729</div>
       <div class="stat-label">涉及公司数</div>
     </div>
     <div class="stat-card">
-      <div class="stat-value">1,556</div>
+      <div class="stat-value">3,129</div>
       <div class="stat-label">问题总数</div>
     </div>
     <div class="stat-card">
-      <div class="stat-value">8</div>
+      <div class="stat-value">17</div>
       <div class="stat-label">问题类型</div>
     </div>
     <div class="stat-card">

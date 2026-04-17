@@ -39,13 +39,23 @@ export default defineConfig({
           {
             text: '按问题类型',
             items: [
-              { text: '股东/实际控制人', link: '/types/股东-实际控制人' },
               { text: '股权变动/代持', link: '/types/股权变动-代持' },
+              { text: '其他', link: '/types/其他' },
+              { text: '数据安全/个人信息', link: '/types/数据安全-个人信息' },
+              { text: '股东/实际控制人', link: '/types/股东-实际控制人' },
               { text: '业务经营/经营范围', link: '/types/业务经营-经营范围' },
               { text: '外汇/境外投资', link: '/types/外汇-境外投资' },
+              { text: '全流通', link: '/types/全流通' },
               { text: '合规问题', link: '/types/合规问题' },
+              { text: '外资准入', link: '/types/外资准入' },
+              { text: '募集资金用途', link: '/types/募集资金用途' },
               { text: '股权架构/VIE', link: '/types/股权架构-VIE' },
-              { text: '其他', link: '/types/other' }
+              { text: '国有股东', link: '/types/国有股东' },
+              { text: '董监高', link: '/types/董监高' },
+              { text: '财务会计', link: '/types/财务会计' },
+              { text: '关联交易/同业竞争', link: '/types/关联交易-同业竞争' },
+              { text: '税务', link: '/types/税务' },
+              { text: '保密/档案管理', link: '/types/保密-档案管理' }
             ]
           }
         ]
@@ -80,13 +90,23 @@ export default defineConfig({
         {
           text: '按问题类型',
           items: [
-            { text: '股东/实际控制人', link: '/types/股东-实际控制人' },
             { text: '股权变动/代持', link: '/types/股权变动-代持' },
+            { text: '其他', link: '/types/其他' },
+            { text: '数据安全/个人信息', link: '/types/数据安全-个人信息' },
+            { text: '股东/实际控制人', link: '/types/股东-实际控制人' },
             { text: '业务经营/经营范围', link: '/types/业务经营-经营范围' },
             { text: '外汇/境外投资', link: '/types/外汇-境外投资' },
+            { text: '全流通', link: '/types/全流通' },
             { text: '合规问题', link: '/types/合规问题' },
+            { text: '外资准入', link: '/types/外资准入' },
+            { text: '募集资金用途', link: '/types/募集资金用途' },
             { text: '股权架构/VIE', link: '/types/股权架构-VIE' },
-            { text: '其他', link: '/types/other' }
+            { text: '国有股东', link: '/types/国有股东' },
+            { text: '董监高', link: '/types/董监高' },
+            { text: '财务会计', link: '/types/财务会计' },
+            { text: '关联交易/同业竞争', link: '/types/关联交易-同业竞争' },
+            { text: '税务', link: '/types/税务' },
+            { text: '保密/档案管理', link: '/types/保密-档案管理' }
           ]
         }
       ],
