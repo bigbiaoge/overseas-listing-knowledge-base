@@ -1,18 +1,17 @@
 {
   "total_documents": 131,
-  "passed": 126,
-  "failed": 5,
-  "total_errors": 6,
-  "total_warnings": 38,
-  "pass_rate": 96.18320610687023,
+  "passed": 127,
+  "failed": 4,
+  "total_errors": 5,
+  "total_warnings": 37,
+  "pass_rate": 96.94656488549617,
   "error_types": {
     "count_mismatch": 4,
-    "empty_content": 2
+    "empty_content": 1
   },
   "warning_types": {
     "question_format_issues": 36,
-    "duplicate_companies": 1,
-    "invalid_company_names": 1
+    "duplicate_companies": 1
   },
   "validation_results": [
     {
@@ -2053,33 +2052,26 @@
     },
     {
       "date": "2026-03-13",
-      "passed": false,
-      "score": 75,
-      "errors": [
-        {
-          "type": "empty_content",
-          "severity": "error",
-          "message": "发现1家企业无问题内容",
-          "details": {
-            "empty_companies": [
-              {
-                "name": "米奥会展",
-                "reason": "问题列表为空"
-              }
-            ]
-          },
-          "suggestion": "检查这些企业的原始文档，确认是否有内容；可能原因：引导语和问题在同一行（软换行问题）、问题格式不标准"
-        }
-      ],
+      "passed": true,
+      "score": 95,
+      "errors": [],
       "warnings": [
         {
           "type": "question_format_issues",
           "severity": "warning",
-          "message": "发现3个问题格式异常",
+          "message": "发现4个问题格式异常",
           "details": {
             "format_issues": [
               {
-                "company": "持股5%以上股东一致行动关系变更的原因，以及变更前后发行人实际控制人的认定情况及依据。 汉得信息",
+                "company": "米奥会展",
+                "question_index": 1,
+                "issues": [
+                  "问题格式不规范（不以序号或\"请\"/\"关于\"开头）"
+                ],
+                "preview": "持股5%以上股东一致行动关系变更的原因，以及变更前后发行人实际控制人的认定情况及依据。"
+              },
+              {
+                "company": "汉得信息",
                 "question_index": 1,
                 "issues": [
                   "问题格式不规范（不以序号或\"请\"/\"关于\"开头）"
@@ -2116,25 +2108,9 @@
     {
       "date": "2026-03-20",
       "passed": true,
-      "score": 95,
+      "score": 100,
       "errors": [],
-      "warnings": [
-        {
-          "type": "invalid_company_names",
-          "severity": "warning",
-          "message": "发现1个可能无效的公司名",
-          "details": {
-            "invalid_companies": [
-              {
-                "name": "备案材料及招股说明书的发行数量上限应保持一致，如存在不一致情形的，请提供修改后的备案报告或招股说明书，如涉及招股说明书调增本次发行数量和募集资金规模，请一并更新募集资金使用计划。 沃客非凡",
-                "issues": [
-                  "公司名过长(94字)"
-                ]
-              }
-            ]
-          }
-        }
-      ],
+      "warnings": [],
       "info": [
         {
           "type": "no_expected_count",
