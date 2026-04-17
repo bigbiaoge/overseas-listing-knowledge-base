@@ -1,26 +1,92 @@
 {
   "total_documents": 131,
-  "passed": 110,
-  "failed": 21,
-  "total_errors": 22,
-  "total_warnings": 8,
-  "pass_rate": 83.96946564885496,
+  "passed": 126,
+  "failed": 5,
+  "total_errors": 6,
+  "total_warnings": 38,
+  "pass_rate": 96.18320610687023,
   "error_types": {
-    "count_mismatch": 5,
-    "empty_content": 17
+    "count_mismatch": 4,
+    "empty_content": 2
   },
   "warning_types": {
-    "invalid_company_names": 4,
-    "question_format_issues": 3,
-    "duplicate_companies": 1
+    "question_format_issues": 36,
+    "duplicate_companies": 1,
+    "invalid_company_names": 1
   },
   "validation_results": [
     {
       "date": "2023-04-20",
       "passed": true,
-      "score": 100,
+      "score": 95,
       "errors": [],
-      "warnings": [],
+      "warnings": [
+        {
+          "type": "question_format_issues",
+          "severity": "warning",
+          "message": "发现7个问题格式异常",
+          "details": {
+            "format_issues": [
+              {
+                "company": "锅圈食品",
+                "question_index": 2,
+                "issues": [
+                  "问题格式不规范（不以序号或\"请\"/\"关于\"开头）"
+                ],
+                "preview": "2019年10月，你公司创始股东在直接持股的情况下，通过零元作价转让股份对实控人杨明超和你公司现任董事、副总经理安浩磊进..."
+              },
+              {
+                "company": "锅圈食品",
+                "question_index": 3,
+                "issues": [
+                  "问题格式不规范（不以序号或\"请\"/\"关于\"开头）"
+                ],
+                "preview": "你公司2022年新增大额商誉的依据与合理性。"
+              },
+              {
+                "company": "锅圈食品",
+                "question_index": 4,
+                "issues": [
+                  "问题格式不规范（不以序号或\"请\"/\"关于\"开头）"
+                ],
+                "preview": "你公司备案报告“特殊股东权利安排情况”一节列示的投资者“招银朗耀”的详细情况，相关信息是否真实、准确、完整。"
+              },
+              {
+                "company": "锅圈食品",
+                "question_index": 5,
+                "issues": [
+                  "问题格式不规范（不以序号或\"请\"/\"关于\"开头）"
+                ],
+                "preview": "你公司开发、运营的APP、小程序等产品情况，收集和存储用户信息规模、数据收集使用情况，是否存在向第三方提供信息内容的情形..."
+              },
+              {
+                "company": "锅圈食品",
+                "question_index": 6,
+                "issues": [
+                  "问题格式不规范（不以序号或\"请\"/\"关于\"开头）"
+                ],
+                "preview": "你公司实际控制人的认定依据，以及春雨霏霏（上海）实业有限公司所持股份未合并计入实控人控制范围的原因。"
+              },
+              {
+                "company": "JINGDONG Industrials, Inc.（京东工业）",
+                "question_index": 4,
+                "issues": [
+                  "问题格式不规范（不以序号或\"请\"/\"关于\"开头）"
+                ],
+                "preview": "权利安排及对公司经营及控制权的影响，有关影响是否仍持续；（2）认定实际控制人的具体依据；（3）员工股权激励计划的合规性，..."
+              },
+              {
+                "company": "JINGDONG Industrials, Inc.（京东工业）",
+                "question_index": 6,
+                "issues": [
+                  "问题格式不规范（不以序号或\"请\"/\"关于\"开头）"
+                ],
+                "preview": "占发行人财务报表相关数据的具体比例；是否存在其他主要运营实体。"
+              }
+            ]
+          }
+        }
+      ],
       "info": []
     },
     {
@@ -34,21 +100,71 @@
     {
       "date": "2023-05-11",
       "passed": false,
-      "score": 80,
+      "score": 75,
       "errors": [
         {
           "type": "count_mismatch",
           "severity": "error",
-          "message": "数量不匹配：预期8家，实际6家",
+          "message": "数量不匹配：预期8家，实际7家",
           "details": {
             "expected": 8,
-            "actual": 6,
-            "difference": 2
+            "actual": 7,
+            "difference": 1
           },
           "suggestion": "检查是否有企业未被识别，可能原因：引导语断开、格式异常、公司名识别失败"
         }
       ],
-      "warnings": [],
+      "warnings": [
+        {
+          "type": "question_format_issues",
+          "severity": "warning",
+          "message": "发现5个问题格式异常",
+          "details": {
+            "format_issues": [
+              {
+                "company": "Maiyue Technology Limited（迈越科技）",
+                "question_index": 1,
+                "issues": [
+                  "问题格式不规范（不以序号或\"请\"/\"关于\"开头）"
+                ],
+                "preview": "你公司曾于2021年和2022年两次递表港交所，后均未能在6个月内通过港交所聆讯，请详细说明未通过上述聆讯的原因，以及为..."
+              },
+              {
+                "company": "Maiyue Technology Limited（迈越科技）",
+                "question_index": 2,
+                "issues": [
+                  "问题格式不规范（不以序号或\"请\"/\"关于\"开头）"
+                ],
+                "preview": "根据备案报告，你公司持有防城港市城投数字科技有限公司65%的股权，请结合该公司的设立目的，运营和财务活动决策机制，高管提..."
+              },
+              {
+                "company": "荃信生物",
+                "question_index": 2,
+                "issues": [
+                  "问题格式不规范（不以序号或\"请\"/\"关于\"开头）"
+                ],
+                "preview": "3、你公司备案材料显示，参与此次股权激励计划的GUOLIANG YU于2022年10月与你公司签订《顾问聘用合同》《授予..."
+              },
+              {
+                "company": "荃信生物",
+                "question_index": 3,
+                "issues": [
+                  "问题格式不规范（不以序号或\"请\"/\"关于\"开头）"
+                ],
+                "preview": "4、你公司备案材料显示，ZHIHUA QIU、郭新军2019年5月30日分别以公司副总裁和技术顾问身份获授认购权激励，“..."
+              },
+              {
+                "company": "JINGDONG Property，Inc.（京东产发）",
+                "question_index": 6,
+                "issues": [
+                  "问题格式不规范（不以序号或\"请\"/\"关于\"开头）"
+                ],
+                "preview": "2020-2022年发行人应付母公司的贷款净额分别为143亿元、87亿元及88亿元，请说明该等贷款的形成过程、本息偿还计..."
+              }
+            ]
+          }
+        }
+      ],
       "info": []
     },
     {
@@ -78,9 +194,35 @@
     {
       "date": "2023-06-08",
       "passed": true,
-      "score": 100,
+      "score": 95,
       "errors": [],
-      "warnings": [],
+      "warnings": [
+        {
+          "type": "question_format_issues",
+          "severity": "warning",
+          "message": "发现2个问题格式异常",
+          "details": {
+            "format_issues": [
+              {
+                "company": "乐思集团",
+                "question_index": 2,
+                "issues": [
+                  "问题格式不规范（不以序号或\"请\"/\"关于\"开头）"
+                ],
+                "preview": "信 95%股权为出资对价取得湖南乐效云1%股权的合理性及合规性；（3）你公司引入 MA LM Assets Manage..."
+              },
+              {
+                "company": "乐思集团",
+                "question_index": 5,
+                "issues": [
+                  "问题格式不规范（不以序号或\"请\"/\"关于\"开头）"
+                ],
+                "preview": "业务是否涉及 《外商投资准入特别管理措施（负面清单）》（2021年版）中互联网文化经营或其他外资禁止或限制类业务。"
+              }
+            ]
+          }
+        }
+      ],
       "info": []
     },
     {
@@ -134,24 +276,9 @@
     {
       "date": "2023-08-03",
       "passed": true,
-      "score": 90,
+      "score": 95,
       "errors": [],
       "warnings": [
-        {
-          "type": "invalid_company_names",
-          "severity": "warning",
-          "message": "发现1个可能无效的公司名",
-          "details": {
-            "invalid_companies": [
-              {
-                "name": "一、阿诺医药（秘交转公开）",
-                "issues": [
-                  "以问题序号开头"
-                ]
-              }
-            ]
-          }
-        },
         {
           "type": "question_format_issues",
           "severity": "warning",
@@ -159,7 +286,7 @@
           "details": {
             "format_issues": [
               {
-                "company": "一、阿诺医药（秘交转公开）",
+                "company": "阿诺医药（秘交转公开）",
                 "question_index": 4,
                 "issues": [
                   "问题内容过短(6字)"
@@ -167,7 +294,7 @@
                 "preview": "二、海普洛斯"
               },
               {
-                "company": "二、海普洛斯",
+                "company": "海普洛斯",
                 "question_index": 5,
                 "issues": [
                   "问题内容过短(6字)"
@@ -175,7 +302,7 @@
                 "preview": "三、乐盟互动"
               },
               {
-                "company": "三、乐盟互动",
+                "company": "乐盟互动",
                 "question_index": 6,
                 "issues": [
                   "问题内容过短(7字)"
@@ -183,7 +310,7 @@
                 "preview": "四、聚水潭网络"
               },
               {
-                "company": "四、聚水潭网络",
+                "company": "聚水潭网络",
                 "question_index": 3,
                 "issues": [
                   "问题内容过短(7字)"
@@ -191,7 +318,7 @@
                 "preview": "五、萝贝电动车"
               },
               {
-                "company": "五、萝贝电动车",
+                "company": "萝贝电动车",
                 "question_index": 4,
                 "issues": [
                   "问题内容过短(6字)"
@@ -199,7 +326,7 @@
                 "preview": "六、天津建发"
               },
               {
-                "company": "六、天津建发",
+                "company": "天津建发",
                 "question_index": 5,
                 "issues": [
                   "问题内容过短(6字)"
@@ -207,7 +334,7 @@
                 "preview": "七、铭腾国际"
               },
               {
-                "company": "七、铭腾国际",
+                "company": "铭腾国际",
                 "question_index": 3,
                 "issues": [
                   "问题内容过短(6字)"
@@ -223,32 +350,17 @@
     {
       "date": "2023-08-10",
       "passed": true,
-      "score": 90,
+      "score": 95,
       "errors": [],
       "warnings": [
         {
-          "type": "invalid_company_names",
-          "severity": "warning",
-          "message": "发现1个可能无效的公司名",
-          "details": {
-            "invalid_companies": [
-              {
-                "name": "一、慧算账",
-                "issues": [
-                  "以问题序号开头"
-                ]
-              }
-            ]
-          }
-        },
-        {
           "type": "question_format_issues",
           "severity": "warning",
-          "message": "发现10个问题格式异常",
+          "message": "发现11个问题格式异常",
           "details": {
             "format_issues": [
               {
-                "company": "一、慧算账",
+                "company": "慧算账",
                 "question_index": 5,
                 "issues": [
                   "问题内容过短(6字)"
@@ -256,7 +368,7 @@
                 "preview": "二、连连数字"
               },
               {
-                "company": "二、连连数字",
+                "company": "连连数字",
                 "question_index": 6,
                 "issues": [
                   "问题内容过短(6字)"
@@ -264,7 +376,7 @@
                 "preview": "三、药明合联"
               },
               {
-                "company": "三、药明合联",
+                "company": "药明合联",
                 "question_index": 5,
                 "issues": [
                   "问题内容过短(5字)"
@@ -272,7 +384,7 @@
                 "preview": "四、贝斯曼"
               },
               {
-                "company": "四、贝斯曼",
+                "company": "贝斯曼",
                 "question_index": 4,
                 "issues": [
                   "问题内容过短(6字)"
@@ -280,7 +392,7 @@
                 "preview": "五、百望股份"
               },
               {
-                "company": "五、百望股份",
+                "company": "百望股份",
                 "question_index": 5,
                 "issues": [
                   "问题内容过短(6字)"
@@ -288,7 +400,7 @@
                 "preview": "六、博将控股"
               },
               {
-                "company": "六、博将控股",
+                "company": "博将控股",
                 "question_index": 5,
                 "issues": [
                   "问题内容过短(5字)"
@@ -296,7 +408,7 @@
                 "preview": "七、美自然"
               },
               {
-                "company": "七、美自然",
+                "company": "美自然",
                 "question_index": 5,
                 "issues": [
                   "问题内容过短(5字)"
@@ -304,7 +416,7 @@
                 "preview": "八、易达云"
               },
               {
-                "company": "八、易达云",
+                "company": "易达云",
                 "question_index": 4,
                 "issues": [
                   "问题内容过短(6字)"
@@ -312,20 +424,20 @@
                 "preview": "九、虎虎科技"
               },
               {
-                "company": "九、虎虎科技",
+                "company": "虎虎科技",
                 "question_index": 2,
+                "issues": [
+                  "问题格式不规范（不以序号或\"请\"/\"关于\"开头）"
+                ],
+                "preview": "你公司股权激励计划的合规性，包括但不限于持股计划的设立背景、具体人员构成、价格公允性、员工持股计划章程或协议约定情况、履..."
+              },
+              {
+                "company": "虎虎科技",
+                "question_index": 3,
                 "issues": [
                   "问题内容过短(6字)"
                 ],
                 "preview": "十、速腾聚创"
-              },
-              {
-                "company": "十、速腾聚创",
-                "question_index": 3,
-                "issues": [
-                  "问题内容过短(7字)"
-                ],
-                "preview": "十一、英矽智能"
               }
             ]
           }
@@ -336,7 +448,7 @@
     {
       "date": "2023-08-17",
       "passed": false,
-      "score": 70,
+      "score": 75,
       "errors": [
         {
           "type": "count_mismatch",
@@ -352,28 +464,13 @@
       ],
       "warnings": [
         {
-          "type": "invalid_company_names",
-          "severity": "warning",
-          "message": "发现1个可能无效的公司名",
-          "details": {
-            "invalid_companies": [
-              {
-                "name": "一、图达通（秘交，已出具备案通知书）",
-                "issues": [
-                  "以问题序号开头"
-                ]
-              }
-            ]
-          }
-        },
-        {
           "type": "question_format_issues",
           "severity": "warning",
           "message": "发现7个问题格式异常",
           "details": {
             "format_issues": [
               {
-                "company": "一、图达通（秘交，已出具备案通知书）",
+                "company": "图达通（秘交，已出具备案通知书）",
                 "question_index": 6,
                 "issues": [
                   "问题内容过短(6字)"
@@ -381,7 +478,7 @@
                 "preview": "二、加立生物"
               },
               {
-                "company": "二、加立生物",
+                "company": "加立生物",
                 "question_index": 5,
                 "issues": [
                   "问题内容过短(8字)"
@@ -389,15 +486,15 @@
                 "preview": "三、宜宾商业银行"
               },
               {
-                "company": "二、加立生物",
-                "question_index": 10,
+                "company": "加立生物",
+                "question_index": 11,
                 "issues": [
                   "问题内容过短(6字)"
                 ],
                 "preview": "四、深业物业"
               },
               {
-                "company": "四、深业物业",
+                "company": "深业物业",
                 "question_index": 3,
                 "issues": [
                   "问题内容过短(6字)"
@@ -405,7 +502,7 @@
                 "preview": "五、健康之路"
               },
               {
-                "company": "五、健康之路",
+                "company": "健康之路",
                 "question_index": 5,
                 "issues": [
                   "问题内容过短(6字)"
@@ -413,7 +510,7 @@
                 "preview": "六、亿腾医药"
               },
               {
-                "company": "六、亿腾医药",
+                "company": "亿腾医药",
                 "question_index": 6,
                 "issues": [
                   "问题内容过短(6字)"
@@ -421,7 +518,7 @@
                 "preview": "七、网映文化"
               },
               {
-                "company": "七、网映文化",
+                "company": "网映文化",
                 "question_index": 5,
                 "issues": [
                   "问题内容过短(5字)"
@@ -444,25 +541,28 @@
     },
     {
       "date": "2023-08-31",
-      "passed": false,
-      "score": 80,
-      "errors": [
+      "passed": true,
+      "score": 95,
+      "errors": [],
+      "warnings": [
         {
-          "type": "empty_content",
-          "severity": "error",
-          "message": "发现1家企业无问题内容",
+          "type": "question_format_issues",
+          "severity": "warning",
+          "message": "发现1个问题格式异常",
           "details": {
-            "empty_companies": [
+            "format_issues": [
               {
-                "name": "康蒂尼",
-                "reason": "问题列表为空"
+                "company": "康蒂尼",
+                "question_index": 1,
+                "issues": [
+                  "问题格式不规范（不以序号或\"请\"/\"关于\"开头）"
+                ],
+                "preview": "你公司与 CATALYST BIOSCIENCES, INC.的资产收购及重组按照《关于非居民企业间接转让财产企业所得税..."
               }
             ]
-          },
-          "suggestion": "检查这些企业的原始文档，确认是否有内容；可能原因：引导语和问题在同一行（软换行问题）、问题格式不标准"
+          }
         }
       ],
-      "warnings": [],
       "info": []
     },
     {
@@ -505,7 +605,7 @@
     {
       "date": "2023-10-12",
       "passed": false,
-      "score": 80,
+      "score": 75,
       "errors": [
         {
           "type": "count_mismatch",
@@ -519,7 +619,25 @@
           "suggestion": "检查是否有企业未被识别，可能原因：引导语断开、格式异常、公司名识别失败"
         }
       ],
-      "warnings": [],
+      "warnings": [
+        {
+          "type": "question_format_issues",
+          "severity": "warning",
+          "message": "发现1个问题格式异常",
+          "details": {
+            "format_issues": [
+              {
+                "company": "宸褀科技",
+                "question_index": 3,
+                "issues": [
+                  "问题格式不规范（不以序号或\"请\"/\"关于\"开头）"
+                ],
+                "preview": "规范运作方面，请说明开发、运营的网站、APP、小程序等产品收集及储存的客户信息规模、数据收集使用情况，是否涉及向第三方提..."
+              }
+            ]
+          }
+        }
+      ],
       "info": []
     },
     {
@@ -533,9 +651,27 @@
     {
       "date": "2023-10-26",
       "passed": true,
-      "score": 100,
+      "score": 95,
       "errors": [],
-      "warnings": [],
+      "warnings": [
+        {
+          "type": "question_format_issues",
+          "severity": "warning",
+          "message": "发现1个问题格式异常",
+          "details": {
+            "format_issues": [
+              {
+                "company": "经发物业",
+                "question_index": 1,
+                "issues": [
+                  "问题格式不规范（不以序号或\"请\"/\"关于\"开头）"
+                ],
+                "preview": "你公司及境内下属公司业务范围涉及房地产经纪、非居住房地产租赁、住房租赁等业务，请说明是否存在房地产开发业务，上述业务开展..."
+              }
+            ]
+          }
+        }
+      ],
       "info": []
     },
     {
@@ -604,25 +740,36 @@
     },
     {
       "date": "2024-01-18",
-      "passed": false,
-      "score": 80,
-      "errors": [
+      "passed": true,
+      "score": 95,
+      "errors": [],
+      "warnings": [
         {
-          "type": "empty_content",
-          "severity": "error",
-          "message": "发现1家企业无问题内容",
+          "type": "question_format_issues",
+          "severity": "warning",
+          "message": "发现2个问题格式异常",
           "details": {
-            "empty_companies": [
+            "format_issues": [
               {
-                "name": "纽曼思",
-                "reason": "问题列表为空"
+                "company": "蜜雪冰城",
+                "question_index": 2,
+                "issues": [
+                  "问题格式不规范（不以序号或\"请\"/\"关于\"开头）"
+                ],
+                "preview": "二 、请说明子公司郑州蜜雪冰城教育科技有限公司的具体业务，是否涉及《境内企业境外发行证券和上市管理试行办法》第八条规定的..."
+              },
+              {
+                "company": "蜜雪冰城",
+                "question_index": 3,
+                "issues": [
+                  "问题格式不规范（不以序号或\"请\"/\"关于\"开头）"
+                ],
+                "preview": "三 、请说明本次申请“全流通”股东所持股份是否存在被质押、冻结或其他有争议的情形，是否按规定予以披露。"
               }
             ]
-          },
-          "suggestion": "检查这些企业的原始文档，确认是否有内容；可能原因：引导语和问题在同一行（软换行问题）、问题格式不标准"
+          }
         }
       ],
-      "warnings": [],
       "info": []
     },
     {
@@ -644,9 +791,27 @@
     {
       "date": "2024-02-22",
       "passed": true,
-      "score": 100,
+      "score": 95,
       "errors": [],
-      "warnings": [],
+      "warnings": [
+        {
+          "type": "question_format_issues",
+          "severity": "warning",
+          "message": "发现1个问题格式异常",
+          "details": {
+            "format_issues": [
+              {
+                "company": "云学堂（已出具备案通知书）",
+                "question_index": 3,
+                "issues": [
+                  "问题格式不规范（不以序号或\"请\"/\"关于\"开头）"
+                ],
+                "preview": "三，你公司存在上市后实施的股份激励计划，预留约占本次发行前总股本6.78%股份作为激励。请具体说明该股份激励计划的激励方..."
+              }
+            ]
+          }
+        }
+      ],
       "info": []
     },
     {
@@ -660,9 +825,43 @@
     {
       "date": "2024-03-07",
       "passed": true,
-      "score": 100,
+      "score": 95,
       "errors": [],
-      "warnings": [],
+      "warnings": [
+        {
+          "type": "question_format_issues",
+          "severity": "warning",
+          "message": "发现3个问题格式异常",
+          "details": {
+            "format_issues": [
+              {
+                "company": "同源康医药",
+                "question_index": 1,
+                "issues": [
+                  "问题格式不规范（不以序号或\"请\"/\"关于\"开头）"
+                ],
+                "preview": "一 、请说明你公司股东2023年12月增资入股价格与前次股权转让价格相比差异较大的原因及合理性。"
+              },
+              {
+                "company": "同源康医药",
+                "question_index": 2,
+                "issues": [
+                  "问题格式不规范（不以序号或\"请\"/\"关于\"开头）"
+                ],
+                "preview": "二 、请参照《上市公司国有股权监督管理办法》说明是否存在国有股东，如有，请说明国资管理程序履行情况。"
+              },
+              {
+                "company": "同源康医药",
+                "question_index": 4,
+                "issues": [
+                  "问题格式不规范（不以序号或\"请\"/\"关于\"开头）"
+                ],
+                "preview": "四 、请说明本次申请“全流通”股东所持股份是否存在被质押、冻结或其他有争议的情形，是否按规定予以披露。"
+              }
+            ]
+          }
+        }
+      ],
       "info": []
     },
     {
@@ -748,17 +947,53 @@
     {
       "date": "2024-06-20",
       "passed": true,
-      "score": 100,
+      "score": 95,
       "errors": [],
-      "warnings": [],
+      "warnings": [
+        {
+          "type": "question_format_issues",
+          "severity": "warning",
+          "message": "发现1个问题格式异常",
+          "details": {
+            "format_issues": [
+              {
+                "company": "梦腾智驾（已出具备案通知书）",
+                "question_index": 7,
+                "issues": [
+                  "问题格式不规范（不以序号或\"请\"/\"关于\"开头）"
+                ],
+                "preview": "方式、发行对象、发行股数、占发行后总股本比例、预计募集资金量（如有）、列表说明发行前后股权结构的变化情况，以及本次发行后..."
+              }
+            ]
+          }
+        }
+      ],
       "info": []
     },
     {
       "date": "2024-06-27",
       "passed": true,
-      "score": 100,
+      "score": 95,
       "errors": [],
-      "warnings": [],
+      "warnings": [
+        {
+          "type": "question_format_issues",
+          "severity": "warning",
+          "message": "发现1个问题格式异常",
+          "details": {
+            "format_issues": [
+              {
+                "company": "参花实业",
+                "question_index": 3,
+                "issues": [
+                  "问题格式不规范（不以序号或\"请\"/\"关于\"开头）"
+                ],
+                "preview": "财务等方面的独立性，并说明你公司对关联方是否存在重大依赖，是否构成本次发行上市实质障碍。"
+              }
+            ]
+          }
+        }
+      ],
       "info": []
     },
     {
@@ -819,33 +1054,54 @@
     },
     {
       "date": "2024-08-29",
-      "passed": false,
-      "score": 80,
-      "errors": [
+      "passed": true,
+      "score": 95,
+      "errors": [],
+      "warnings": [
         {
-          "type": "empty_content",
-          "severity": "error",
-          "message": "发现1家企业无问题内容",
+          "type": "question_format_issues",
+          "severity": "warning",
+          "message": "发现1个问题格式异常",
           "details": {
-            "empty_companies": [
+            "format_issues": [
               {
-                "name": "百利天恒",
-                "reason": "问题列表为空"
+                "company": "百利天恒",
+                "question_index": 1,
+                "issues": [
+                  "问题格式不规范（不以序号或\"请\"/\"关于\"开头）"
+                ],
+                "preview": "你公司及下属公司经营范围涉及药物互联网信息服务的实际开展情况，药物互联网信息服务及中成药相关业务是否涉及外资准入负面清单..."
               }
             ]
-          },
-          "suggestion": "检查这些企业的原始文档，确认是否有内容；可能原因：引导语和问题在同一行（软换行问题）、问题格式不标准"
+          }
         }
       ],
-      "warnings": [],
       "info": []
     },
     {
       "date": "2024-09-26",
       "passed": true,
-      "score": 100,
+      "score": 95,
       "errors": [],
-      "warnings": [],
+      "warnings": [
+        {
+          "type": "question_format_issues",
+          "severity": "warning",
+          "message": "发现1个问题格式异常",
+          "details": {
+            "format_issues": [
+              {
+                "company": "东源环球（秘交转公开）",
+                "question_index": 2,
+                "issues": [
+                  "问题格式不规范（不以序号或\"请\"/\"关于\"开头）"
+                ],
+                "preview": "（1）杭州天成是否办理境内直接投资外汇登记手续，是否履行《外商投资信息报告办法》规定的报告义务；（2）杭州天成收购苏州天..."
+              }
+            ]
+          }
+        }
+      ],
       "info": []
     },
     {
@@ -867,9 +1123,27 @@
     {
       "date": "2024-11-07",
       "passed": true,
-      "score": 100,
+      "score": 95,
       "errors": [],
-      "warnings": [],
+      "warnings": [
+        {
+          "type": "question_format_issues",
+          "severity": "warning",
+          "message": "发现1个问题格式异常",
+          "details": {
+            "format_issues": [
+              {
+                "company": "利鼎集团",
+                "question_index": 2,
+                "issues": [
+                  "问题格式不规范（不以序号或\"请\"/\"关于\"开头）"
+                ],
+                "preview": "(1)香港利鼎设立上海美利鼎履行外汇登记、外商投资报告监管程序情况及合规性结论。(2)上海美利鼎取得上海竞坤、天津丰迈股..."
+              }
+            ]
+          }
+        }
+      ],
       "info": []
     },
     {
@@ -962,37 +1236,92 @@
     },
     {
       "date": "2025-02-20",
-      "passed": false,
-      "score": 80,
-      "errors": [
+      "passed": true,
+      "score": 95,
+      "errors": [],
+      "warnings": [
         {
-          "type": "empty_content",
-          "severity": "error",
-          "message": "发现1家企业无问题内容",
+          "type": "question_format_issues",
+          "severity": "warning",
+          "message": "发现2个问题格式异常",
           "details": {
-            "empty_companies": [
+            "format_issues": [
               {
-                "name": "威美控股",
-                "reason": "问题列表为空"
+                "company": "威美控股",
+                "question_index": 1,
+                "issues": [
+                  "问题格式不规范（不以序号或\"请\"/\"关于\"开头）"
+                ],
+                "preview": "前次备案通知书出具12个月内未完成境外发行上市的情况及原因。"
+              },
+              {
+                "company": "威美控股",
+                "question_index": 2,
+                "issues": [
+                  "问题格式不规范（不以序号或\"请\"/\"关于\"开头）"
+                ],
+                "preview": "前次备案时承诺事项的履行情况。"
               }
             ]
-          },
-          "suggestion": "检查这些企业的原始文档，确认是否有内容；可能原因：引导语和问题在同一行（软换行问题）、问题格式不标准"
+          }
         }
       ],
-      "warnings": [],
       "info": []
     },
     {
       "date": "2025-02-27",
       "passed": true,
-      "score": 100,
+      "score": 95,
       "errors": [],
-      "warnings": [],
+      "warnings": [
+        {
+          "type": "question_format_issues",
+          "severity": "warning",
+          "message": "发现1个问题格式异常",
+          "details": {
+            "format_issues": [
+              {
+                "company": "乐欣户外",
+                "question_index": 4,
+                "issues": [
+                  "问题格式不规范（不以序号或\"请\"/\"关于\"开头）"
+                ],
+                "preview": "及第一大供应商,请说明发行人及境内运营实体与泰普森控股集团在人员、资产、业务、财务等方面的独立性，并就发行人及境内运营实..."
+              }
+            ]
+          }
+        }
+      ],
       "info": []
     },
     {
       "date": "2025-03-06",
+      "passed": true,
+      "score": 95,
+      "errors": [],
+      "warnings": [
+        {
+          "type": "question_format_issues",
+          "severity": "warning",
+          "message": "发现1个问题格式异常",
+          "details": {
+            "format_issues": [
+              {
+                "company": "维立志博",
+                "question_index": 3,
+                "issues": [
+                  "问题格式不规范（不以序号或\"请\"/\"关于\"开头）"
+                ],
+                "preview": "依据，是否实缴出资，是否存在未履行出资义务、抽逃出资、出资方式等存在瑕疵的情形。"
+              }
+            ]
+          }
+        }
+      ],
+      "info": []
+    },
+    {
+      "date": "2025-03-13",
       "passed": true,
       "score": 100,
       "errors": [],
@@ -1000,49 +1329,29 @@
       "info": []
     },
     {
-      "date": "2025-03-13",
-      "passed": false,
-      "score": 80,
-      "errors": [
-        {
-          "type": "empty_content",
-          "severity": "error",
-          "message": "发现1家企业无问题内容",
-          "details": {
-            "empty_companies": [
-              {
-                "name": "金晟新能源",
-                "reason": "问题列表为空"
-              }
-            ]
-          },
-          "suggestion": "检查这些企业的原始文档，确认是否有内容；可能原因：引导语和问题在同一行（软换行问题）、问题格式不标准"
-        }
-      ],
-      "warnings": [],
-      "info": []
-    },
-    {
       "date": "2025-03-20",
-      "passed": false,
-      "score": 80,
-      "errors": [
+      "passed": true,
+      "score": 95,
+      "errors": [],
+      "warnings": [
         {
-          "type": "empty_content",
-          "severity": "error",
-          "message": "发现1家企业无问题内容",
+          "type": "question_format_issues",
+          "severity": "warning",
+          "message": "发现1个问题格式异常",
           "details": {
-            "empty_companies": [
+            "format_issues": [
               {
-                "name": "峰岹科技",
-                "reason": "问题列表为空"
+                "company": "峰岹科技",
+                "question_index": 1,
+                "issues": [
+                  "问题格式不规范（不以序号或\"请\"/\"关于\"开头）"
+                ],
+                "preview": "你公司及子公司经营范围均包含技术出口业务，请说明最近三年技术出口业务的开展情况及合规性。"
               }
             ]
-          },
-          "suggestion": "检查这些企业的原始文档，确认是否有内容；可能原因：引导语和问题在同一行（软换行问题）、问题格式不标准"
+          }
         }
       ],
-      "warnings": [],
       "info": []
     },
     {
@@ -1055,48 +1364,70 @@
     },
     {
       "date": "2025-04-02",
-      "passed": false,
-      "score": 80,
-      "errors": [
+      "passed": true,
+      "score": 95,
+      "errors": [],
+      "warnings": [
         {
-          "type": "empty_content",
-          "severity": "error",
-          "message": "发现1家企业无问题内容",
+          "type": "question_format_issues",
+          "severity": "warning",
+          "message": "发现3个问题格式异常",
           "details": {
-            "empty_companies": [
+            "format_issues": [
               {
-                "name": "天岳先进",
-                "reason": "问题列表为空"
+                "company": "信华信",
+                "question_index": 3,
+                "issues": [
+                  "问题格式不规范（不以序号或\"请\"/\"关于\"开头）"
+                ],
+                "preview": "涉及开发、运营网站、小程序、APP、公众号等产品，是否涉及向第三方提供信息内容，提供信息内容的类型以及信息内容安全保护措..."
+              },
+              {
+                "company": "信华信",
+                "question_index": 5,
+                "issues": [
+                  "问题格式不规范（不以序号或\"请\"/\"关于\"开头）"
+                ],
+                "preview": "数（含超额配售）、占发行后总股本比例、预计募集资金量等，并列表说明全额行使超额配售权的情况下，本次境外上市前后股权架构的..."
+              },
+              {
+                "company": "天岳先进",
+                "question_index": 1,
+                "issues": [
+                  "问题格式不规范（不以序号或\"请\"/\"关于\"开头）"
+                ],
+                "preview": "你公司及子公司经营范围均包含技术出口业务，请说明最近三年技术出口业务的开展情况及合规性。"
               }
             ]
-          },
-          "suggestion": "检查这些企业的原始文档，确认是否有内容；可能原因：引导语和问题在同一行（软换行问题）、问题格式不标准"
+          }
         }
       ],
-      "warnings": [],
       "info": []
     },
     {
       "date": "2025-04-10",
-      "passed": false,
-      "score": 80,
-      "errors": [
+      "passed": true,
+      "score": 95,
+      "errors": [],
+      "warnings": [
         {
-          "type": "empty_content",
-          "severity": "error",
-          "message": "发现1家企业无问题内容",
+          "type": "question_format_issues",
+          "severity": "warning",
+          "message": "发现1个问题格式异常",
           "details": {
-            "empty_companies": [
+            "format_issues": [
               {
-                "name": "聚智",
-                "reason": "问题列表为空"
+                "company": "聚智",
+                "question_index": 1,
+                "issues": [
+                  "问题格式不规范（不以序号或\"请\"/\"关于\"开头）"
+                ],
+                "preview": "（1）架构搭建所涉外汇登记、境外投资、外商投资、税费缴纳等监管程序履行情况及合法合规的结论性意见。（2）集中新设湖北康尔..."
               }
             ]
-          },
-          "suggestion": "检查这些企业的原始文档，确认是否有内容；可能原因：引导语和问题在同一行（软换行问题）、问题格式不标准"
+          }
         }
       ],
-      "warnings": [],
       "info": []
     },
     {
@@ -1109,25 +1440,28 @@
     },
     {
       "date": "2025-04-24",
-      "passed": false,
-      "score": 80,
-      "errors": [
+      "passed": true,
+      "score": 95,
+      "errors": [],
+      "warnings": [
         {
-          "type": "empty_content",
-          "severity": "error",
-          "message": "发现1家企业无问题内容",
+          "type": "question_format_issues",
+          "severity": "warning",
+          "message": "发现1个问题格式异常",
           "details": {
-            "empty_companies": [
+            "format_issues": [
               {
-                "name": "江波龙",
-                "reason": "问题列表为空"
+                "company": "江波龙",
+                "question_index": 1,
+                "issues": [
+                  "问题格式不规范（不以序号或\"请\"/\"关于\"开头）"
+                ],
+                "preview": "你公司及子公司经营范围均包含技术出口业务，请说明最近三年技术出口业务的开展情况及合规性。"
               }
             ]
-          },
-          "suggestion": "检查这些企业的原始文档，确认是否有内容；可能原因：引导语和问题在同一行（软换行问题）、问题格式不标准"
+          }
         }
       ],
-      "warnings": [],
       "info": []
     },
     {
@@ -1141,9 +1475,35 @@
     {
       "date": "2025-05-15",
       "passed": true,
-      "score": 100,
+      "score": 95,
       "errors": [],
-      "warnings": [],
+      "warnings": [
+        {
+          "type": "question_format_issues",
+          "severity": "warning",
+          "message": "发现2个问题格式异常",
+          "details": {
+            "format_issues": [
+              {
+                "company": "格兰控股",
+                "question_index": 2,
+                "issues": [
+                  "问题格式不规范（不以序号或\"请\"/\"关于\"开头）"
+                ],
+                "preview": "论性意见;（2）2025年2月宁波甬张收购宁波格兰98.9998%股权的定价依据、支付期限及其合规性、收购定价的公允性，..."
+              },
+              {
+                "company": "格兰控股",
+                "question_index": 4,
+                "issues": [
+                  "问题格式不规范（不以序号或\"请\"/\"关于\"开头）"
+                ],
+                "preview": "记等监管程序具体履行情况，并就合规性出具结论性意见。"
+              }
+            ]
+          }
+        }
+      ],
       "info": []
     },
     {
@@ -1164,21 +1524,9 @@
     },
     {
       "date": "2025-06-05",
-      "passed": false,
-      "score": 80,
-      "errors": [
-        {
-          "type": "count_mismatch",
-          "severity": "error",
-          "message": "数量不匹配：预期5家，实际4家",
-          "details": {
-            "expected": 5,
-            "actual": 4,
-            "difference": 1
-          },
-          "suggestion": "检查是否有企业未被识别，可能原因：引导语断开、格式异常、公司名识别失败"
-        }
-      ],
+      "passed": true,
+      "score": 100,
+      "errors": [],
       "warnings": [],
       "info": []
     },
@@ -1192,41 +1540,80 @@
     },
     {
       "date": "2025-06-19",
-      "passed": false,
-      "score": 80,
-      "errors": [
+      "passed": true,
+      "score": 95,
+      "errors": [],
+      "warnings": [
         {
-          "type": "empty_content",
-          "severity": "error",
-          "message": "发现1家企业无问题内容",
+          "type": "question_format_issues",
+          "severity": "warning",
+          "message": "发现1个问题格式异常",
           "details": {
-            "empty_companies": [
+            "format_issues": [
               {
-                "name": "和辉光电",
-                "reason": "问题列表为空"
+                "company": "和辉光电",
+                "question_index": 1,
+                "issues": [
+                  "问题格式不规范（不以序号或\"请\"/\"关于\"开头）"
+                ],
+                "preview": "你公司经营范围包含技术出口业务，请说明最近三年技术出口业务的开展情况及合规性。"
               }
             ]
-          },
-          "suggestion": "检查这些企业的原始文档，确认是否有内容；可能原因：引导语和问题在同一行（软换行问题）、问题格式不标准"
+          }
         }
       ],
-      "warnings": [],
       "info": []
     },
     {
       "date": "2025-06-26",
       "passed": true,
-      "score": 100,
+      "score": 95,
       "errors": [],
-      "warnings": [],
+      "warnings": [
+        {
+          "type": "question_format_issues",
+          "severity": "warning",
+          "message": "发现1个问题格式异常",
+          "details": {
+            "format_issues": [
+              {
+                "company": "世界之路（秘交转公开）",
+                "question_index": 4,
+                "issues": [
+                  "问题格式不规范（不以序号或\"请\"/\"关于\"开头）"
+                ],
+                "preview": "境内运营实体存在注册资本未缴足的情况，请补充说明原因及合规性；（3）你公司开发、运营的网站、APP、小程序等产品情况，收..."
+              }
+            ]
+          }
+        }
+      ],
       "info": []
     },
     {
       "date": "2025-07-03",
       "passed": true,
-      "score": 100,
+      "score": 95,
       "errors": [],
-      "warnings": [],
+      "warnings": [
+        {
+          "type": "question_format_issues",
+          "severity": "warning",
+          "message": "发现1个问题格式异常",
+          "details": {
+            "format_issues": [
+              {
+                "company": "三一重工",
+                "question_index": 5,
+                "issues": [
+                  "问题格式不规范（不以序号或\"请\"/\"关于\"开头）"
+                ],
+                "preview": "五，请提供湖南三一工业职业技术学院由中方主导的明确结论性意见。"
+              }
+            ]
+          }
+        }
+      ],
       "info": []
     },
     {
@@ -1256,9 +1643,43 @@
     {
       "date": "2025-07-31",
       "passed": true,
-      "score": 100,
+      "score": 95,
       "errors": [],
-      "warnings": [],
+      "warnings": [
+        {
+          "type": "question_format_issues",
+          "severity": "warning",
+          "message": "发现3个问题格式异常",
+          "details": {
+            "format_issues": [
+              {
+                "company": "骅升科技",
+                "question_index": 2,
+                "issues": [
+                  "问题格式不规范（不以序号或\"请\"/\"关于\"开头）"
+                ],
+                "preview": "结论性意见，并请说明收购江苏骅盛、东莞骅国股权是否符合当时有效的外商投资、税务管理等监管规定的结论性意见。"
+              },
+              {
+                "company": "环世物流",
+                "question_index": 2,
+                "issues": [
+                  "问题格式不规范（不以序号或\"请\"/\"关于\"开头）"
+                ],
+                "preview": "合《关于外国投资者并购境内企业的规定》；（3）环世集团股权架构调整过程中3次减资的原因及对价支付情况，是否涉及虚假出资、..."
+              },
+              {
+                "company": "环世物流",
+                "question_index": 4,
+                "issues": [
+                  "问题格式不规范（不以序号或\"请\"/\"关于\"开头）"
+                ],
+                "preview": "因、合规性及其对公司运营和偿债能力的影响；（2）主要境内运营实体历次股权变动均合法合规的结论性意见。"
+              }
+            ]
+          }
+        }
+      ],
       "info": []
     },
     {
@@ -1303,25 +1724,28 @@
     },
     {
       "date": "2025-09-11",
-      "passed": false,
-      "score": 80,
-      "errors": [
+      "passed": true,
+      "score": 95,
+      "errors": [],
+      "warnings": [
         {
-          "type": "empty_content",
-          "severity": "error",
-          "message": "发现1家企业无问题内容",
+          "type": "question_format_issues",
+          "severity": "warning",
+          "message": "发现1个问题格式异常",
           "details": {
-            "empty_companies": [
+            "format_issues": [
               {
-                "name": "澜起科技",
-                "reason": "问题列表为空"
+                "company": "澜起科技",
+                "question_index": 1,
+                "issues": [
+                  "问题格式不规范（不以序号或\"请\"/\"关于\"开头）"
+                ],
+                "preview": "你公司部分子公司经营范围包含技术出口业务，请说明你公司及子公司最近三年技术出口业务的开展情况及合规性，是否存在技术跨境转..."
               }
             ]
-          },
-          "suggestion": "检查这些企业的原始文档，确认是否有内容；可能原因：引导语和问题在同一行（软换行问题）、问题格式不标准"
+          }
         }
       ],
-      "warnings": [],
       "info": []
     },
     {
@@ -1441,9 +1865,35 @@
     {
       "date": "2025-11-28",
       "passed": true,
-      "score": 100,
+      "score": 95,
       "errors": [],
-      "warnings": [],
+      "warnings": [
+        {
+          "type": "question_format_issues",
+          "severity": "warning",
+          "message": "发现2个问题格式异常",
+          "details": {
+            "format_issues": [
+              {
+                "company": "应世生物",
+                "question_index": 2,
+                "issues": [
+                  "问题格式不规范（不以序号或\"请\"/\"关于\"开头）"
+                ],
+                "preview": "行情况，并说明是否符合当时有效监管规定的结论性意见；（2）你公司取得境内运营实体的定价依据、支付手段、支付期限、定价的公..."
+              },
+              {
+                "company": "纳真科技",
+                "question_index": 2,
+                "issues": [
+                  "问题格式不规范（不以序号或\"请\"/\"关于\"开头）"
+                ],
+                "preview": "行情况，并说明是否符合当时有效监管规定的结论性意见；（2）你公司收购境内运营实体的股权对价、定价依据、支付手段、支付期限..."
+              }
+            ]
+          }
+        }
+      ],
       "info": []
     },
     {
@@ -1457,9 +1907,35 @@
     {
       "date": "2025-12-12",
       "passed": true,
-      "score": 100,
+      "score": 95,
       "errors": [],
-      "warnings": [],
+      "warnings": [
+        {
+          "type": "question_format_issues",
+          "severity": "warning",
+          "message": "发现2个问题格式异常",
+          "details": {
+            "format_issues": [
+              {
+                "company": "优地机器人（已出具备案通知书）",
+                "question_index": 11,
+                "issues": [
+                  "问题格式不规范（不以序号或\"请\"/\"关于\"开头）"
+                ],
+                "preview": "12个月内新增股东间接持有发行人股份的情况。"
+              },
+              {
+                "company": "龙电华鑫（已出具备案通知书）",
+                "question_index": 5,
+                "issues": [
+                  "问题格式不规范（不以序号或\"请\"/\"关于\"开头）"
+                ],
+                "preview": "12个月内新增股东间接持有发行人股份的情况。"
+              }
+            ]
+          }
+        }
+      ],
       "info": []
     },
     {
@@ -1488,24 +1964,9 @@
     },
     {
       "date": "2026-01-09",
-      "passed": false,
-      "score": 80,
-      "errors": [
-        {
-          "type": "empty_content",
-          "severity": "error",
-          "message": "发现1家企业无问题内容",
-          "details": {
-            "empty_companies": [
-              {
-                "name": "首创证券",
-                "reason": "问题列表为空"
-              }
-            ]
-          },
-          "suggestion": "检查这些企业的原始文档，确认是否有内容；可能原因：引导语和问题在同一行（软换行问题）、问题格式不标准"
-        }
-      ],
+      "passed": true,
+      "score": 100,
+      "errors": [],
       "warnings": [],
       "info": []
     },
@@ -1527,25 +1988,28 @@
     },
     {
       "date": "2026-01-30",
-      "passed": false,
-      "score": 80,
-      "errors": [
+      "passed": true,
+      "score": 95,
+      "errors": [],
+      "warnings": [
         {
-          "type": "empty_content",
-          "severity": "error",
-          "message": "发现1家企业无问题内容",
+          "type": "question_format_issues",
+          "severity": "warning",
+          "message": "发现1个问题格式异常",
           "details": {
-            "empty_companies": [
+            "format_issues": [
               {
-                "name": "龙迅股份",
-                "reason": "问题列表为空"
+                "company": "龙迅股份",
+                "question_index": 1,
+                "issues": [
+                  "问题格式不规范（不以序号或\"请\"/\"关于\"开头）"
+                ],
+                "preview": "备案材料与招股说明书中关于发行方案相关内容应保持一致，请对照《监管规则适用指引——境外发行上市类第2号》要求说明本次发行..."
               }
             ]
-          },
-          "suggestion": "检查这些企业的原始文档，确认是否有内容；可能原因：引导语和问题在同一行（软换行问题）、问题格式不标准"
+          }
         }
       ],
-      "warnings": [],
       "info": []
     },
     {
@@ -1558,25 +2022,28 @@
     },
     {
       "date": "2026-03-02",
-      "passed": false,
-      "score": 80,
-      "errors": [
+      "passed": true,
+      "score": 95,
+      "errors": [],
+      "warnings": [
         {
-          "type": "empty_content",
-          "severity": "error",
-          "message": "发现1家企业无问题内容",
+          "type": "question_format_issues",
+          "severity": "warning",
+          "message": "发现1个问题格式异常",
           "details": {
-            "empty_companies": [
+            "format_issues": [
               {
-                "name": "天下秀",
-                "reason": "问题列表为空"
+                "company": "天下秀",
+                "question_index": 1,
+                "issues": [
+                  "问题格式不规范（不以序号或\"请\"/\"关于\"开头）"
+                ],
+                "preview": "发行人及下属公司“广告发布；广告设计、代理；社会经济咨询服务；组织文化艺术交流活动；文化娱乐经纪人服务；演出经纪”有关业..."
               }
             ]
-          },
-          "suggestion": "检查这些企业的原始文档，确认是否有内容；可能原因：引导语和问题在同一行（软换行问题）、问题格式不标准"
+          }
         }
       ],
-      "warnings": [],
       "info": [
         {
           "type": "no_expected_count",
@@ -1587,28 +2054,16 @@
     {
       "date": "2026-03-13",
       "passed": false,
-      "score": 80,
+      "score": 75,
       "errors": [
         {
           "type": "empty_content",
           "severity": "error",
-          "message": "发现4家企业无问题内容",
+          "message": "发现1家企业无问题内容",
           "details": {
             "empty_companies": [
               {
                 "name": "米奥会展",
-                "reason": "问题列表为空"
-              },
-              {
-                "name": "持股5%以上股东一致行动关系变更的原因，以及变更前后发行人实际控制人的认定情况及依据。 汉得信息",
-                "reason": "问题列表为空"
-              },
-              {
-                "name": "聚和材料",
-                "reason": "问题列表为空"
-              },
-              {
-                "name": "科大智能",
                 "reason": "问题列表为空"
               }
             ]
@@ -1616,7 +2071,41 @@
           "suggestion": "检查这些企业的原始文档，确认是否有内容；可能原因：引导语和问题在同一行（软换行问题）、问题格式不标准"
         }
       ],
-      "warnings": [],
+      "warnings": [
+        {
+          "type": "question_format_issues",
+          "severity": "warning",
+          "message": "发现3个问题格式异常",
+          "details": {
+            "format_issues": [
+              {
+                "company": "持股5%以上股东一致行动关系变更的原因，以及变更前后发行人实际控制人的认定情况及依据。 汉得信息",
+                "question_index": 1,
+                "issues": [
+                  "问题格式不规范（不以序号或\"请\"/\"关于\"开头）"
+                ],
+                "preview": "实际控制人变更的原因及控制权的认定依据。"
+              },
+              {
+                "company": "聚和材料",
+                "question_index": 1,
+                "issues": [
+                  "问题格式不规范（不以序号或\"请\"/\"关于\"开头）"
+                ],
+                "preview": "国有股东履行国有股标识等国资管理程序的进展情况。"
+              },
+              {
+                "company": "科大智能",
+                "question_index": 1,
+                "issues": [
+                  "问题格式不规范（不以序号或\"请\"/\"关于\"开头）"
+                ],
+                "preview": "募集资金境内外用途占比，是否计划调回境内及调回境内的具体比例。"
+              }
+            ]
+          }
+        }
+      ],
       "info": [
         {
           "type": "no_expected_count",
@@ -1637,9 +2126,9 @@
           "details": {
             "invalid_companies": [
               {
-                "name": "六、备案材料及招股说明书的发行数量上限应保持一致，如存在不一致情形的，请提供修改后的备案报告或招股说明书，如涉及招股说明书调增本次发行数量和募集资金规模，请一并更新募集资金使用计划。 沃客非凡",
+                "name": "备案材料及招股说明书的发行数量上限应保持一致，如存在不一致情形的，请提供修改后的备案报告或招股说明书，如涉及招股说明书调增本次发行数量和募集资金规模，请一并更新募集资金使用计划。 沃客非凡",
                 "issues": [
-                  "公司名过长(96字)"
+                  "公司名过长(94字)"
                 ]
               }
             ]
@@ -1655,29 +2144,68 @@
     },
     {
       "date": "2026-03-27",
-      "passed": false,
-      "score": 80,
-      "errors": [
+      "passed": true,
+      "score": 95,
+      "errors": [],
+      "warnings": [
         {
-          "type": "empty_content",
-          "severity": "error",
-          "message": "发现2家企业无问题内容",
+          "type": "question_format_issues",
+          "severity": "warning",
+          "message": "发现6个问题格式异常",
           "details": {
-            "empty_companies": [
+            "format_issues": [
               {
-                "name": "金星啤酒",
-                "reason": "问题列表为空"
+                "company": "金星啤酒",
+                "question_index": 1,
+                "issues": [
+                  "问题格式不规范（不以序号或\"请\"/\"关于\"开头）"
+                ],
+                "preview": "历次增资及股权转让定价依据，是否实缴出资，是否存在未履行出资义务、抽逃出资、出资方式存在瑕疵的情形，并就历次股权变动是否..."
               },
               {
-                "name": "聚辰股份",
-                "reason": "问题列表为空"
+                "company": "金星啤酒",
+                "question_index": 2,
+                "issues": [
+                  "问题格式不规范（不以序号或\"请\"/\"关于\"开头）"
+                ],
+                "preview": "提交境外发行上市备案申请前12个月内新增股东入股价格的定价依据、与同期增资定价差异原因及其合理性，以及上述股权转让环节相..."
+              },
+              {
+                "company": "金星啤酒",
+                "question_index": 3,
+                "issues": [
+                  "问题格式不规范（不以序号或\"请\"/\"关于\"开头）"
+                ],
+                "preview": "募集资金具体本次拟参与“全流通”股东所持股份是否存在被质押、冻结或其他权利瑕疵的情形。用途及境内外用途占比，是否计划调回..."
+              },
+              {
+                "company": "金星啤酒",
+                "question_index": 4,
+                "issues": [
+                  "问题格式不规范（不以序号或\"请\"/\"关于\"开头）"
+                ],
+                "preview": "备案材料与招股说明书中关于发行方案相关内容应保持一致，请对照《监管规则适用指引——境外发行上市类第2号》要求说明本次发行..."
+              },
+              {
+                "company": "金星啤酒",
+                "question_index": 5,
+                "issues": [
+                  "问题格式不规范（不以序号或\"请\"/\"关于\"开头）"
+                ],
+                "preview": "本次拟参与“全流通”股东所持股份是否存在被质押、冻结或其他权利瑕疵的情形。"
+              },
+              {
+                "company": "聚辰股份",
+                "question_index": 1,
+                "issues": [
+                  "问题格式不规范（不以序号或\"请\"/\"关于\"开头）"
+                ],
+                "preview": "设立境外子公司涉及的境外投资、外汇登记等监管程序具体履行情况，并就合规性出具结论性意见。"
               }
             ]
-          },
-          "suggestion": "检查这些企业的原始文档，确认是否有内容；可能原因：引导语和问题在同一行（软换行问题）、问题格式不标准"
+          }
         }
       ],
-      "warnings": [],
       "info": [
         {
           "type": "no_expected_count",
