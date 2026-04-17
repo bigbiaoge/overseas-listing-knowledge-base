@@ -45,7 +45,7 @@ features:
   <h2>📈 总体统计</h2>
   <div class="stats-grid">
     <div class="stat-card">
-      <div class="stat-value">732</div>
+      <div class="stat-value">738</div>
       <div class="stat-label">涉及公司数</div>
     </div>
     <div class="stat-card">
@@ -53,8 +53,8 @@ features:
       <div class="stat-label">问题总数</div>
     </div>
     <div class="stat-card">
-      <div class="stat-value">17</div>
-      <div class="stat-label">问题类型</div>
+      <div class="stat-value">132</div>
+      <div class="stat-label">公示期数</div>
     </div>
     <div class="stat-card">
       <div class="stat-value">4</div>
