@@ -1,0 +1,1736 @@
+{
+  "total_documents": 131,
+  "passed": 110,
+  "failed": 21,
+  "total_errors": 22,
+  "total_warnings": 8,
+  "pass_rate": 83.96946564885496,
+  "error_types": {
+    "count_mismatch": 5,
+    "empty_content": 17
+  },
+  "warning_types": {
+    "invalid_company_names": 4,
+    "question_format_issues": 3,
+    "duplicate_companies": 1
+  },
+  "validation_results": [
+    {
+      "date": "2023-04-20",
+      "passed": true,
+      "score": 100,
+      "errors": [],
+      "warnings": [],
+      "info": []
+    },
+    {
+      "date": "2023-04-27",
+      "passed": true,
+      "score": 100,
+      "errors": [],
+      "warnings": [],
+      "info": []
+    },
+    {
+      "date": "2023-05-11",
+      "passed": false,
+      "score": 80,
+      "errors": [
+        {
+          "type": "count_mismatch",
+          "severity": "error",
+          "message": "数量不匹配：预期8家，实际6家",
+          "details": {
+            "expected": 8,
+            "actual": 6,
+            "difference": 2
+          },
+          "suggestion": "检查是否有企业未被识别，可能原因：引导语断开、格式异常、公司名识别失败"
+        }
+      ],
+      "warnings": [],
+      "info": []
+    },
+    {
+      "date": "2023-05-18",
+      "passed": true,
+      "score": 100,
+      "errors": [],
+      "warnings": [],
+      "info": []
+    },
+    {
+      "date": "2023-05-25",
+      "passed": true,
+      "score": 100,
+      "errors": [],
+      "warnings": [],
+      "info": []
+    },
+    {
+      "date": "2023-06-01",
+      "passed": true,
+      "score": 100,
+      "errors": [],
+      "warnings": [],
+      "info": []
+    },
+    {
+      "date": "2023-06-08",
+      "passed": true,
+      "score": 100,
+      "errors": [],
+      "warnings": [],
+      "info": []
+    },
+    {
+      "date": "2023-06-15",
+      "passed": true,
+      "score": 100,
+      "errors": [],
+      "warnings": [],
+      "info": []
+    },
+    {
+      "date": "2023-06-29",
+      "passed": true,
+      "score": 100,
+      "errors": [],
+      "warnings": [],
+      "info": []
+    },
+    {
+      "date": "2023-07-06",
+      "passed": true,
+      "score": 100,
+      "errors": [],
+      "warnings": [],
+      "info": []
+    },
+    {
+      "date": "2023-07-13",
+      "passed": true,
+      "score": 100,
+      "errors": [],
+      "warnings": [],
+      "info": []
+    },
+    {
+      "date": "2023-07-20",
+      "passed": true,
+      "score": 100,
+      "errors": [],
+      "warnings": [],
+      "info": []
+    },
+    {
+      "date": "2023-07-27",
+      "passed": true,
+      "score": 100,
+      "errors": [],
+      "warnings": [],
+      "info": []
+    },
+    {
+      "date": "2023-08-03",
+      "passed": true,
+      "score": 90,
+      "errors": [],
+      "warnings": [
+        {
+          "type": "invalid_company_names",
+          "severity": "warning",
+          "message": "发现1个可能无效的公司名",
+          "details": {
+            "invalid_companies": [
+              {
+                "name": "一、阿诺医药（秘交转公开）",
+                "issues": [
+                  "以问题序号开头"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "type": "question_format_issues",
+          "severity": "warning",
+          "message": "发现7个问题格式异常",
+          "details": {
+            "format_issues": [
+              {
+                "company": "一、阿诺医药（秘交转公开）",
+                "question_index": 4,
+                "issues": [
+                  "问题内容过短(6字)"
+                ],
+                "preview": "二、海普洛斯"
+              },
+              {
+                "company": "二、海普洛斯",
+                "question_index": 5,
+                "issues": [
+                  "问题内容过短(6字)"
+                ],
+                "preview": "三、乐盟互动"
+              },
+              {
+                "company": "三、乐盟互动",
+                "question_index": 6,
+                "issues": [
+                  "问题内容过短(7字)"
+                ],
+                "preview": "四、聚水潭网络"
+              },
+              {
+                "company": "四、聚水潭网络",
+                "question_index": 3,
+                "issues": [
+                  "问题内容过短(7字)"
+                ],
+                "preview": "五、萝贝电动车"
+              },
+              {
+                "company": "五、萝贝电动车",
+                "question_index": 4,
+                "issues": [
+                  "问题内容过短(6字)"
+                ],
+                "preview": "六、天津建发"
+              },
+              {
+                "company": "六、天津建发",
+                "question_index": 5,
+                "issues": [
+                  "问题内容过短(6字)"
+                ],
+                "preview": "七、铭腾国际"
+              },
+              {
+                "company": "七、铭腾国际",
+                "question_index": 3,
+                "issues": [
+                  "问题内容过短(6字)"
+                ],
+                "preview": "八、瑞浦兰钧"
+              }
+            ]
+          }
+        }
+      ],
+      "info": []
+    },
+    {
+      "date": "2023-08-10",
+      "passed": true,
+      "score": 90,
+      "errors": [],
+      "warnings": [
+        {
+          "type": "invalid_company_names",
+          "severity": "warning",
+          "message": "发现1个可能无效的公司名",
+          "details": {
+            "invalid_companies": [
+              {
+                "name": "一、慧算账",
+                "issues": [
+                  "以问题序号开头"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "type": "question_format_issues",
+          "severity": "warning",
+          "message": "发现10个问题格式异常",
+          "details": {
+            "format_issues": [
+              {
+                "company": "一、慧算账",
+                "question_index": 5,
+                "issues": [
+                  "问题内容过短(6字)"
+                ],
+                "preview": "二、连连数字"
+              },
+              {
+                "company": "二、连连数字",
+                "question_index": 6,
+                "issues": [
+                  "问题内容过短(6字)"
+                ],
+                "preview": "三、药明合联"
+              },
+              {
+                "company": "三、药明合联",
+                "question_index": 5,
+                "issues": [
+                  "问题内容过短(5字)"
+                ],
+                "preview": "四、贝斯曼"
+              },
+              {
+                "company": "四、贝斯曼",
+                "question_index": 4,
+                "issues": [
+                  "问题内容过短(6字)"
+                ],
+                "preview": "五、百望股份"
+              },
+              {
+                "company": "五、百望股份",
+                "question_index": 5,
+                "issues": [
+                  "问题内容过短(6字)"
+                ],
+                "preview": "六、博将控股"
+              },
+              {
+                "company": "六、博将控股",
+                "question_index": 5,
+                "issues": [
+                  "问题内容过短(5字)"
+                ],
+                "preview": "七、美自然"
+              },
+              {
+                "company": "七、美自然",
+                "question_index": 5,
+                "issues": [
+                  "问题内容过短(5字)"
+                ],
+                "preview": "八、易达云"
+              },
+              {
+                "company": "八、易达云",
+                "question_index": 4,
+                "issues": [
+                  "问题内容过短(6字)"
+                ],
+                "preview": "九、虎虎科技"
+              },
+              {
+                "company": "九、虎虎科技",
+                "question_index": 2,
+                "issues": [
+                  "问题内容过短(6字)"
+                ],
+                "preview": "十、速腾聚创"
+              },
+              {
+                "company": "十、速腾聚创",
+                "question_index": 3,
+                "issues": [
+                  "问题内容过短(7字)"
+                ],
+                "preview": "十一、英矽智能"
+              }
+            ]
+          }
+        }
+      ],
+      "info": []
+    },
+    {
+      "date": "2023-08-17",
+      "passed": false,
+      "score": 70,
+      "errors": [
+        {
+          "type": "count_mismatch",
+          "severity": "error",
+          "message": "数量不匹配：预期8家，实际7家",
+          "details": {
+            "expected": 8,
+            "actual": 7,
+            "difference": 1
+          },
+          "suggestion": "检查是否有企业未被识别，可能原因：引导语断开、格式异常、公司名识别失败"
+        }
+      ],
+      "warnings": [
+        {
+          "type": "invalid_company_names",
+          "severity": "warning",
+          "message": "发现1个可能无效的公司名",
+          "details": {
+            "invalid_companies": [
+              {
+                "name": "一、图达通（秘交，已出具备案通知书）",
+                "issues": [
+                  "以问题序号开头"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "type": "question_format_issues",
+          "severity": "warning",
+          "message": "发现7个问题格式异常",
+          "details": {
+            "format_issues": [
+              {
+                "company": "一、图达通（秘交，已出具备案通知书）",
+                "question_index": 6,
+                "issues": [
+                  "问题内容过短(6字)"
+                ],
+                "preview": "二、加立生物"
+              },
+              {
+                "company": "二、加立生物",
+                "question_index": 5,
+                "issues": [
+                  "问题内容过短(8字)"
+                ],
+                "preview": "三、宜宾商业银行"
+              },
+              {
+                "company": "二、加立生物",
+                "question_index": 10,
+                "issues": [
+                  "问题内容过短(6字)"
+                ],
+                "preview": "四、深业物业"
+              },
+              {
+                "company": "四、深业物业",
+                "question_index": 3,
+                "issues": [
+                  "问题内容过短(6字)"
+                ],
+                "preview": "五、健康之路"
+              },
+              {
+                "company": "五、健康之路",
+                "question_index": 5,
+                "issues": [
+                  "问题内容过短(6字)"
+                ],
+                "preview": "六、亿腾医药"
+              },
+              {
+                "company": "六、亿腾医药",
+                "question_index": 6,
+                "issues": [
+                  "问题内容过短(6字)"
+                ],
+                "preview": "七、网映文化"
+              },
+              {
+                "company": "七、网映文化",
+                "question_index": 5,
+                "issues": [
+                  "问题内容过短(5字)"
+                ],
+                "preview": "八、日日煮"
+              }
+            ]
+          }
+        }
+      ],
+      "info": []
+    },
+    {
+      "date": "2023-08-24",
+      "passed": true,
+      "score": 100,
+      "errors": [],
+      "warnings": [],
+      "info": []
+    },
+    {
+      "date": "2023-08-31",
+      "passed": false,
+      "score": 80,
+      "errors": [
+        {
+          "type": "empty_content",
+          "severity": "error",
+          "message": "发现1家企业无问题内容",
+          "details": {
+            "empty_companies": [
+              {
+                "name": "康蒂尼",
+                "reason": "问题列表为空"
+              }
+            ]
+          },
+          "suggestion": "检查这些企业的原始文档，确认是否有内容；可能原因：引导语和问题在同一行（软换行问题）、问题格式不标准"
+        }
+      ],
+      "warnings": [],
+      "info": []
+    },
+    {
+      "date": "2023-09-07",
+      "passed": true,
+      "score": 100,
+      "errors": [],
+      "warnings": [],
+      "info": []
+    },
+    {
+      "date": "2023-09-14",
+      "passed": true,
+      "score": 100,
+      "errors": [],
+      "warnings": [],
+      "info": [
+        {
+          "type": "no_expected_count",
+          "message": "文档未声明预期企业数量"
+        }
+      ]
+    },
+    {
+      "date": "2023-09-21",
+      "passed": true,
+      "score": 100,
+      "errors": [],
+      "warnings": [],
+      "info": []
+    },
+    {
+      "date": "2023-09-28",
+      "passed": true,
+      "score": 100,
+      "errors": [],
+      "warnings": [],
+      "info": []
+    },
+    {
+      "date": "2023-10-12",
+      "passed": false,
+      "score": 80,
+      "errors": [
+        {
+          "type": "count_mismatch",
+          "severity": "error",
+          "message": "数量不匹配：预期1家，实际2家",
+          "details": {
+            "expected": 1,
+            "actual": 2,
+            "difference": -1
+          },
+          "suggestion": "检查是否有企业未被识别，可能原因：引导语断开、格式异常、公司名识别失败"
+        }
+      ],
+      "warnings": [],
+      "info": []
+    },
+    {
+      "date": "2023-10-19",
+      "passed": true,
+      "score": 100,
+      "errors": [],
+      "warnings": [],
+      "info": []
+    },
+    {
+      "date": "2023-10-26",
+      "passed": true,
+      "score": 100,
+      "errors": [],
+      "warnings": [],
+      "info": []
+    },
+    {
+      "date": "2023-11-09",
+      "passed": true,
+      "score": 100,
+      "errors": [],
+      "warnings": [],
+      "info": []
+    },
+    {
+      "date": "2023-11-16",
+      "passed": true,
+      "score": 100,
+      "errors": [],
+      "warnings": [],
+      "info": []
+    },
+    {
+      "date": "2023-11-23",
+      "passed": true,
+      "score": 100,
+      "errors": [],
+      "warnings": [],
+      "info": []
+    },
+    {
+      "date": "2023-11-30",
+      "passed": true,
+      "score": 100,
+      "errors": [],
+      "warnings": [],
+      "info": []
+    },
+    {
+      "date": "2023-12-21",
+      "passed": true,
+      "score": 100,
+      "errors": [],
+      "warnings": [],
+      "info": []
+    },
+    {
+      "date": "2023-12-28",
+      "passed": true,
+      "score": 100,
+      "errors": [],
+      "warnings": [],
+      "info": []
+    },
+    {
+      "date": "2024-01-04",
+      "passed": true,
+      "score": 100,
+      "errors": [],
+      "warnings": [],
+      "info": []
+    },
+    {
+      "date": "2024-01-11",
+      "passed": true,
+      "score": 100,
+      "errors": [],
+      "warnings": [],
+      "info": []
+    },
+    {
+      "date": "2024-01-18",
+      "passed": false,
+      "score": 80,
+      "errors": [
+        {
+          "type": "empty_content",
+          "severity": "error",
+          "message": "发现1家企业无问题内容",
+          "details": {
+            "empty_companies": [
+              {
+                "name": "纽曼思",
+                "reason": "问题列表为空"
+              }
+            ]
+          },
+          "suggestion": "检查这些企业的原始文档，确认是否有内容；可能原因：引导语和问题在同一行（软换行问题）、问题格式不标准"
+        }
+      ],
+      "warnings": [],
+      "info": []
+    },
+    {
+      "date": "2024-01-25",
+      "passed": true,
+      "score": 100,
+      "errors": [],
+      "warnings": [],
+      "info": []
+    },
+    {
+      "date": "2024-02-01",
+      "passed": true,
+      "score": 100,
+      "errors": [],
+      "warnings": [],
+      "info": []
+    },
+    {
+      "date": "2024-02-22",
+      "passed": true,
+      "score": 100,
+      "errors": [],
+      "warnings": [],
+      "info": []
+    },
+    {
+      "date": "2024-02-29",
+      "passed": true,
+      "score": 100,
+      "errors": [],
+      "warnings": [],
+      "info": []
+    },
+    {
+      "date": "2024-03-07",
+      "passed": true,
+      "score": 100,
+      "errors": [],
+      "warnings": [],
+      "info": []
+    },
+    {
+      "date": "2024-03-14",
+      "passed": true,
+      "score": 100,
+      "errors": [],
+      "warnings": [],
+      "info": []
+    },
+    {
+      "date": "2024-03-21",
+      "passed": true,
+      "score": 100,
+      "errors": [],
+      "warnings": [],
+      "info": []
+    },
+    {
+      "date": "2024-03-28",
+      "passed": true,
+      "score": 100,
+      "errors": [],
+      "warnings": [],
+      "info": []
+    },
+    {
+      "date": "2024-04-11",
+      "passed": true,
+      "score": 100,
+      "errors": [],
+      "warnings": [],
+      "info": []
+    },
+    {
+      "date": "2024-04-18",
+      "passed": true,
+      "score": 100,
+      "errors": [],
+      "warnings": [],
+      "info": []
+    },
+    {
+      "date": "2024-05-09",
+      "passed": true,
+      "score": 100,
+      "errors": [],
+      "warnings": [],
+      "info": []
+    },
+    {
+      "date": "2024-05-16",
+      "passed": true,
+      "score": 100,
+      "errors": [],
+      "warnings": [],
+      "info": []
+    },
+    {
+      "date": "2024-05-30",
+      "passed": true,
+      "score": 100,
+      "errors": [],
+      "warnings": [],
+      "info": []
+    },
+    {
+      "date": "2024-06-06",
+      "passed": true,
+      "score": 100,
+      "errors": [],
+      "warnings": [],
+      "info": []
+    },
+    {
+      "date": "2024-06-13",
+      "passed": true,
+      "score": 100,
+      "errors": [],
+      "warnings": [],
+      "info": []
+    },
+    {
+      "date": "2024-06-20",
+      "passed": true,
+      "score": 100,
+      "errors": [],
+      "warnings": [],
+      "info": []
+    },
+    {
+      "date": "2024-06-27",
+      "passed": true,
+      "score": 100,
+      "errors": [],
+      "warnings": [],
+      "info": []
+    },
+    {
+      "date": "2024-07-04",
+      "passed": true,
+      "score": 100,
+      "errors": [],
+      "warnings": [],
+      "info": []
+    },
+    {
+      "date": "2024-07-11",
+      "passed": true,
+      "score": 100,
+      "errors": [],
+      "warnings": [],
+      "info": []
+    },
+    {
+      "date": "2024-07-18",
+      "passed": true,
+      "score": 100,
+      "errors": [],
+      "warnings": [],
+      "info": []
+    },
+    {
+      "date": "2024-07-25",
+      "passed": true,
+      "score": 100,
+      "errors": [],
+      "warnings": [],
+      "info": []
+    },
+    {
+      "date": "2024-08-01",
+      "passed": true,
+      "score": 100,
+      "errors": [],
+      "warnings": [],
+      "info": []
+    },
+    {
+      "date": "2024-08-08",
+      "passed": true,
+      "score": 100,
+      "errors": [],
+      "warnings": [],
+      "info": []
+    },
+    {
+      "date": "2024-08-22",
+      "passed": true,
+      "score": 100,
+      "errors": [],
+      "warnings": [],
+      "info": []
+    },
+    {
+      "date": "2024-08-29",
+      "passed": false,
+      "score": 80,
+      "errors": [
+        {
+          "type": "empty_content",
+          "severity": "error",
+          "message": "发现1家企业无问题内容",
+          "details": {
+            "empty_companies": [
+              {
+                "name": "百利天恒",
+                "reason": "问题列表为空"
+              }
+            ]
+          },
+          "suggestion": "检查这些企业的原始文档，确认是否有内容；可能原因：引导语和问题在同一行（软换行问题）、问题格式不标准"
+        }
+      ],
+      "warnings": [],
+      "info": []
+    },
+    {
+      "date": "2024-09-26",
+      "passed": true,
+      "score": 100,
+      "errors": [],
+      "warnings": [],
+      "info": []
+    },
+    {
+      "date": "2024-10-10",
+      "passed": true,
+      "score": 100,
+      "errors": [],
+      "warnings": [],
+      "info": []
+    },
+    {
+      "date": "2024-10-24",
+      "passed": true,
+      "score": 100,
+      "errors": [],
+      "warnings": [],
+      "info": []
+    },
+    {
+      "date": "2024-11-07",
+      "passed": true,
+      "score": 100,
+      "errors": [],
+      "warnings": [],
+      "info": []
+    },
+    {
+      "date": "2024-11-14",
+      "passed": true,
+      "score": 100,
+      "errors": [],
+      "warnings": [],
+      "info": []
+    },
+    {
+      "date": "2024-11-28",
+      "passed": true,
+      "score": 100,
+      "errors": [],
+      "warnings": [],
+      "info": []
+    },
+    {
+      "date": "2024-12-05",
+      "passed": true,
+      "score": 100,
+      "errors": [],
+      "warnings": [],
+      "info": []
+    },
+    {
+      "date": "2024-12-12",
+      "passed": true,
+      "score": 100,
+      "errors": [],
+      "warnings": [],
+      "info": []
+    },
+    {
+      "date": "2024-12-26",
+      "passed": true,
+      "score": 100,
+      "errors": [],
+      "warnings": [],
+      "info": []
+    },
+    {
+      "date": "2025-01-02",
+      "passed": true,
+      "score": 100,
+      "errors": [],
+      "warnings": [],
+      "info": []
+    },
+    {
+      "date": "2025-01-09",
+      "passed": true,
+      "score": 100,
+      "errors": [],
+      "warnings": [],
+      "info": []
+    },
+    {
+      "date": "2025-01-16",
+      "passed": true,
+      "score": 100,
+      "errors": [],
+      "warnings": [],
+      "info": []
+    },
+    {
+      "date": "2025-01-24",
+      "passed": true,
+      "score": 100,
+      "errors": [],
+      "warnings": [],
+      "info": []
+    },
+    {
+      "date": "2025-02-07",
+      "passed": true,
+      "score": 100,
+      "errors": [],
+      "warnings": [],
+      "info": []
+    },
+    {
+      "date": "2025-02-13",
+      "passed": true,
+      "score": 100,
+      "errors": [],
+      "warnings": [],
+      "info": []
+    },
+    {
+      "date": "2025-02-20",
+      "passed": false,
+      "score": 80,
+      "errors": [
+        {
+          "type": "empty_content",
+          "severity": "error",
+          "message": "发现1家企业无问题内容",
+          "details": {
+            "empty_companies": [
+              {
+                "name": "威美控股",
+                "reason": "问题列表为空"
+              }
+            ]
+          },
+          "suggestion": "检查这些企业的原始文档，确认是否有内容；可能原因：引导语和问题在同一行（软换行问题）、问题格式不标准"
+        }
+      ],
+      "warnings": [],
+      "info": []
+    },
+    {
+      "date": "2025-02-27",
+      "passed": true,
+      "score": 100,
+      "errors": [],
+      "warnings": [],
+      "info": []
+    },
+    {
+      "date": "2025-03-06",
+      "passed": true,
+      "score": 100,
+      "errors": [],
+      "warnings": [],
+      "info": []
+    },
+    {
+      "date": "2025-03-13",
+      "passed": false,
+      "score": 80,
+      "errors": [
+        {
+          "type": "empty_content",
+          "severity": "error",
+          "message": "发现1家企业无问题内容",
+          "details": {
+            "empty_companies": [
+              {
+                "name": "金晟新能源",
+                "reason": "问题列表为空"
+              }
+            ]
+          },
+          "suggestion": "检查这些企业的原始文档，确认是否有内容；可能原因：引导语和问题在同一行（软换行问题）、问题格式不标准"
+        }
+      ],
+      "warnings": [],
+      "info": []
+    },
+    {
+      "date": "2025-03-20",
+      "passed": false,
+      "score": 80,
+      "errors": [
+        {
+          "type": "empty_content",
+          "severity": "error",
+          "message": "发现1家企业无问题内容",
+          "details": {
+            "empty_companies": [
+              {
+                "name": "峰岹科技",
+                "reason": "问题列表为空"
+              }
+            ]
+          },
+          "suggestion": "检查这些企业的原始文档，确认是否有内容；可能原因：引导语和问题在同一行（软换行问题）、问题格式不标准"
+        }
+      ],
+      "warnings": [],
+      "info": []
+    },
+    {
+      "date": "2025-03-27",
+      "passed": true,
+      "score": 100,
+      "errors": [],
+      "warnings": [],
+      "info": []
+    },
+    {
+      "date": "2025-04-02",
+      "passed": false,
+      "score": 80,
+      "errors": [
+        {
+          "type": "empty_content",
+          "severity": "error",
+          "message": "发现1家企业无问题内容",
+          "details": {
+            "empty_companies": [
+              {
+                "name": "天岳先进",
+                "reason": "问题列表为空"
+              }
+            ]
+          },
+          "suggestion": "检查这些企业的原始文档，确认是否有内容；可能原因：引导语和问题在同一行（软换行问题）、问题格式不标准"
+        }
+      ],
+      "warnings": [],
+      "info": []
+    },
+    {
+      "date": "2025-04-10",
+      "passed": false,
+      "score": 80,
+      "errors": [
+        {
+          "type": "empty_content",
+          "severity": "error",
+          "message": "发现1家企业无问题内容",
+          "details": {
+            "empty_companies": [
+              {
+                "name": "聚智",
+                "reason": "问题列表为空"
+              }
+            ]
+          },
+          "suggestion": "检查这些企业的原始文档，确认是否有内容；可能原因：引导语和问题在同一行（软换行问题）、问题格式不标准"
+        }
+      ],
+      "warnings": [],
+      "info": []
+    },
+    {
+      "date": "2025-04-17",
+      "passed": true,
+      "score": 100,
+      "errors": [],
+      "warnings": [],
+      "info": []
+    },
+    {
+      "date": "2025-04-24",
+      "passed": false,
+      "score": 80,
+      "errors": [
+        {
+          "type": "empty_content",
+          "severity": "error",
+          "message": "发现1家企业无问题内容",
+          "details": {
+            "empty_companies": [
+              {
+                "name": "江波龙",
+                "reason": "问题列表为空"
+              }
+            ]
+          },
+          "suggestion": "检查这些企业的原始文档，确认是否有内容；可能原因：引导语和问题在同一行（软换行问题）、问题格式不标准"
+        }
+      ],
+      "warnings": [],
+      "info": []
+    },
+    {
+      "date": "2025-05-09",
+      "passed": true,
+      "score": 100,
+      "errors": [],
+      "warnings": [],
+      "info": []
+    },
+    {
+      "date": "2025-05-15",
+      "passed": true,
+      "score": 100,
+      "errors": [],
+      "warnings": [],
+      "info": []
+    },
+    {
+      "date": "2025-05-22",
+      "passed": true,
+      "score": 100,
+      "errors": [],
+      "warnings": [],
+      "info": []
+    },
+    {
+      "date": "2025-05-29",
+      "passed": true,
+      "score": 100,
+      "errors": [],
+      "warnings": [],
+      "info": []
+    },
+    {
+      "date": "2025-06-05",
+      "passed": false,
+      "score": 80,
+      "errors": [
+        {
+          "type": "count_mismatch",
+          "severity": "error",
+          "message": "数量不匹配：预期5家，实际4家",
+          "details": {
+            "expected": 5,
+            "actual": 4,
+            "difference": 1
+          },
+          "suggestion": "检查是否有企业未被识别，可能原因：引导语断开、格式异常、公司名识别失败"
+        }
+      ],
+      "warnings": [],
+      "info": []
+    },
+    {
+      "date": "2025-06-12",
+      "passed": true,
+      "score": 100,
+      "errors": [],
+      "warnings": [],
+      "info": []
+    },
+    {
+      "date": "2025-06-19",
+      "passed": false,
+      "score": 80,
+      "errors": [
+        {
+          "type": "empty_content",
+          "severity": "error",
+          "message": "发现1家企业无问题内容",
+          "details": {
+            "empty_companies": [
+              {
+                "name": "和辉光电",
+                "reason": "问题列表为空"
+              }
+            ]
+          },
+          "suggestion": "检查这些企业的原始文档，确认是否有内容；可能原因：引导语和问题在同一行（软换行问题）、问题格式不标准"
+        }
+      ],
+      "warnings": [],
+      "info": []
+    },
+    {
+      "date": "2025-06-26",
+      "passed": true,
+      "score": 100,
+      "errors": [],
+      "warnings": [],
+      "info": []
+    },
+    {
+      "date": "2025-07-03",
+      "passed": true,
+      "score": 100,
+      "errors": [],
+      "warnings": [],
+      "info": []
+    },
+    {
+      "date": "2025-07-10",
+      "passed": true,
+      "score": 100,
+      "errors": [],
+      "warnings": [],
+      "info": []
+    },
+    {
+      "date": "2025-07-17",
+      "passed": true,
+      "score": 100,
+      "errors": [],
+      "warnings": [],
+      "info": []
+    },
+    {
+      "date": "2025-07-24",
+      "passed": true,
+      "score": 100,
+      "errors": [],
+      "warnings": [],
+      "info": []
+    },
+    {
+      "date": "2025-07-31",
+      "passed": true,
+      "score": 100,
+      "errors": [],
+      "warnings": [],
+      "info": []
+    },
+    {
+      "date": "2025-08-07",
+      "passed": true,
+      "score": 100,
+      "errors": [],
+      "warnings": [],
+      "info": []
+    },
+    {
+      "date": "2025-08-14",
+      "passed": true,
+      "score": 100,
+      "errors": [],
+      "warnings": [],
+      "info": []
+    },
+    {
+      "date": "2025-08-21",
+      "passed": true,
+      "score": 100,
+      "errors": [],
+      "warnings": [],
+      "info": []
+    },
+    {
+      "date": "2025-08-28",
+      "passed": true,
+      "score": 100,
+      "errors": [],
+      "warnings": [],
+      "info": []
+    },
+    {
+      "date": "2025-09-04",
+      "passed": true,
+      "score": 100,
+      "errors": [],
+      "warnings": [],
+      "info": []
+    },
+    {
+      "date": "2025-09-11",
+      "passed": false,
+      "score": 80,
+      "errors": [
+        {
+          "type": "empty_content",
+          "severity": "error",
+          "message": "发现1家企业无问题内容",
+          "details": {
+            "empty_companies": [
+              {
+                "name": "澜起科技",
+                "reason": "问题列表为空"
+              }
+            ]
+          },
+          "suggestion": "检查这些企业的原始文档，确认是否有内容；可能原因：引导语和问题在同一行（软换行问题）、问题格式不标准"
+        }
+      ],
+      "warnings": [],
+      "info": []
+    },
+    {
+      "date": "2025-09-18",
+      "passed": true,
+      "score": 100,
+      "errors": [],
+      "warnings": [],
+      "info": []
+    },
+    {
+      "date": "2025-09-25",
+      "passed": true,
+      "score": 100,
+      "errors": [],
+      "warnings": [],
+      "info": []
+    },
+    {
+      "date": "2025-10-11",
+      "passed": true,
+      "score": 100,
+      "errors": [],
+      "warnings": [],
+      "info": []
+    },
+    {
+      "date": "2025-10-17",
+      "passed": false,
+      "score": 55,
+      "errors": [
+        {
+          "type": "count_mismatch",
+          "severity": "error",
+          "message": "数量不匹配：预期10家，实际11家",
+          "details": {
+            "expected": 10,
+            "actual": 11,
+            "difference": -1
+          },
+          "suggestion": "检查是否有企业未被识别，可能原因：引导语断开、格式异常、公司名识别失败"
+        },
+        {
+          "type": "empty_content",
+          "severity": "error",
+          "message": "发现1家企业无问题内容",
+          "details": {
+            "empty_companies": [
+              {
+                "name": "英发睿能",
+                "reason": "问题列表为空"
+              }
+            ]
+          },
+          "suggestion": "检查这些企业的原始文档，确认是否有内容；可能原因：引导语和问题在同一行（软换行问题）、问题格式不标准"
+        }
+      ],
+      "warnings": [
+        {
+          "type": "duplicate_companies",
+          "severity": "warning",
+          "message": "发现1个重复企业",
+          "details": {
+            "duplicates": [
+              {
+                "name": "英发睿能",
+                "first_occurrence": 1,
+                "second_occurrence": 2
+              }
+            ]
+          },
+          "suggestion": "检查解析逻辑，可能是引导语重复识别或公司名提取错误"
+        }
+      ],
+      "info": []
+    },
+    {
+      "date": "2025-10-24",
+      "passed": true,
+      "score": 100,
+      "errors": [],
+      "warnings": [],
+      "info": []
+    },
+    {
+      "date": "2025-10-31",
+      "passed": true,
+      "score": 100,
+      "errors": [],
+      "warnings": [],
+      "info": []
+    },
+    {
+      "date": "2025-11-07",
+      "passed": true,
+      "score": 100,
+      "errors": [],
+      "warnings": [],
+      "info": []
+    },
+    {
+      "date": "2025-11-14",
+      "passed": true,
+      "score": 100,
+      "errors": [],
+      "warnings": [],
+      "info": []
+    },
+    {
+      "date": "2025-11-21",
+      "passed": true,
+      "score": 100,
+      "errors": [],
+      "warnings": [],
+      "info": []
+    },
+    {
+      "date": "2025-11-28",
+      "passed": true,
+      "score": 100,
+      "errors": [],
+      "warnings": [],
+      "info": []
+    },
+    {
+      "date": "2025-12-05",
+      "passed": true,
+      "score": 100,
+      "errors": [],
+      "warnings": [],
+      "info": []
+    },
+    {
+      "date": "2025-12-12",
+      "passed": true,
+      "score": 100,
+      "errors": [],
+      "warnings": [],
+      "info": []
+    },
+    {
+      "date": "2025-12-19",
+      "passed": true,
+      "score": 100,
+      "errors": [],
+      "warnings": [],
+      "info": []
+    },
+    {
+      "date": "2025-12-26",
+      "passed": true,
+      "score": 100,
+      "errors": [],
+      "warnings": [],
+      "info": []
+    },
+    {
+      "date": "2026-01-04",
+      "passed": true,
+      "score": 100,
+      "errors": [],
+      "warnings": [],
+      "info": []
+    },
+    {
+      "date": "2026-01-09",
+      "passed": false,
+      "score": 80,
+      "errors": [
+        {
+          "type": "empty_content",
+          "severity": "error",
+          "message": "发现1家企业无问题内容",
+          "details": {
+            "empty_companies": [
+              {
+                "name": "首创证券",
+                "reason": "问题列表为空"
+              }
+            ]
+          },
+          "suggestion": "检查这些企业的原始文档，确认是否有内容；可能原因：引导语和问题在同一行（软换行问题）、问题格式不标准"
+        }
+      ],
+      "warnings": [],
+      "info": []
+    },
+    {
+      "date": "2026-01-16",
+      "passed": true,
+      "score": 100,
+      "errors": [],
+      "warnings": [],
+      "info": []
+    },
+    {
+      "date": "2026-01-23",
+      "passed": true,
+      "score": 100,
+      "errors": [],
+      "warnings": [],
+      "info": []
+    },
+    {
+      "date": "2026-01-30",
+      "passed": false,
+      "score": 80,
+      "errors": [
+        {
+          "type": "empty_content",
+          "severity": "error",
+          "message": "发现1家企业无问题内容",
+          "details": {
+            "empty_companies": [
+              {
+                "name": "龙迅股份",
+                "reason": "问题列表为空"
+              }
+            ]
+          },
+          "suggestion": "检查这些企业的原始文档，确认是否有内容；可能原因：引导语和问题在同一行（软换行问题）、问题格式不标准"
+        }
+      ],
+      "warnings": [],
+      "info": []
+    },
+    {
+      "date": "2026-02-06",
+      "passed": true,
+      "score": 100,
+      "errors": [],
+      "warnings": [],
+      "info": []
+    },
+    {
+      "date": "2026-03-02",
+      "passed": false,
+      "score": 80,
+      "errors": [
+        {
+          "type": "empty_content",
+          "severity": "error",
+          "message": "发现1家企业无问题内容",
+          "details": {
+            "empty_companies": [
+              {
+                "name": "天下秀",
+                "reason": "问题列表为空"
+              }
+            ]
+          },
+          "suggestion": "检查这些企业的原始文档，确认是否有内容；可能原因：引导语和问题在同一行（软换行问题）、问题格式不标准"
+        }
+      ],
+      "warnings": [],
+      "info": [
+        {
+          "type": "no_expected_count",
+          "message": "文档未声明预期企业数量"
+        }
+      ]
+    },
+    {
+      "date": "2026-03-13",
+      "passed": false,
+      "score": 80,
+      "errors": [
+        {
+          "type": "empty_content",
+          "severity": "error",
+          "message": "发现4家企业无问题内容",
+          "details": {
+            "empty_companies": [
+              {
+                "name": "米奥会展",
+                "reason": "问题列表为空"
+              },
+              {
+                "name": "持股5%以上股东一致行动关系变更的原因，以及变更前后发行人实际控制人的认定情况及依据。 汉得信息",
+                "reason": "问题列表为空"
+              },
+              {
+                "name": "聚和材料",
+                "reason": "问题列表为空"
+              },
+              {
+                "name": "科大智能",
+                "reason": "问题列表为空"
+              }
+            ]
+          },
+          "suggestion": "检查这些企业的原始文档，确认是否有内容；可能原因：引导语和问题在同一行（软换行问题）、问题格式不标准"
+        }
+      ],
+      "warnings": [],
+      "info": [
+        {
+          "type": "no_expected_count",
+          "message": "文档未声明预期企业数量"
+        }
+      ]
+    },
+    {
+      "date": "2026-03-20",
+      "passed": true,
+      "score": 95,
+      "errors": [],
+      "warnings": [
+        {
+          "type": "invalid_company_names",
+          "severity": "warning",
+          "message": "发现1个可能无效的公司名",
+          "details": {
+            "invalid_companies": [
+              {
+                "name": "六、备案材料及招股说明书的发行数量上限应保持一致，如存在不一致情形的，请提供修改后的备案报告或招股说明书，如涉及招股说明书调增本次发行数量和募集资金规模，请一并更新募集资金使用计划。 沃客非凡",
+                "issues": [
+                  "公司名过长(96字)"
+                ]
+              }
+            ]
+          }
+        }
+      ],
+      "info": [
+        {
+          "type": "no_expected_count",
+          "message": "文档未声明预期企业数量"
+        }
+      ]
+    },
+    {
+      "date": "2026-03-27",
+      "passed": false,
+      "score": 80,
+      "errors": [
+        {
+          "type": "empty_content",
+          "severity": "error",
+          "message": "发现2家企业无问题内容",
+          "details": {
+            "empty_companies": [
+              {
+                "name": "金星啤酒",
+                "reason": "问题列表为空"
+              },
+              {
+                "name": "聚辰股份",
+                "reason": "问题列表为空"
+              }
+            ]
+          },
+          "suggestion": "检查这些企业的原始文档，确认是否有内容；可能原因：引导语和问题在同一行（软换行问题）、问题格式不标准"
+        }
+      ],
+      "warnings": [],
+      "info": [
+        {
+          "type": "no_expected_count",
+          "message": "文档未声明预期企业数量"
+        }
+      ]
+    },
+    {
+      "date": "2026-04-03",
+      "passed": true,
+      "score": 100,
+      "errors": [],
+      "warnings": [],
+      "info": [
+        {
+          "type": "no_expected_count",
+          "message": "文档未声明预期企业数量"
+        }
+      ]
+    },
+    {
+      "date": "2026-04-10",
+      "passed": true,
+      "score": 100,
+      "errors": [],
+      "warnings": [],
+      "info": [
+        {
+          "type": "no_expected_count",
+          "message": "文档未声明预期企业数量"
+        }
+      ]
+    },
+    {
+      "date": "Unknown",
+      "passed": true,
+      "score": 100,
+      "errors": [],
+      "warnings": [],
+      "info": []
+    },
+    {
+      "date": "Unknown",
+      "passed": true,
+      "score": 100,
+      "errors": [],
+      "warnings": [],
+      "info": [
+        {
+          "type": "no_expected_count",
+          "message": "文档未声明预期企业数量"
+        }
+      ]
+    }
+  ]
+}
