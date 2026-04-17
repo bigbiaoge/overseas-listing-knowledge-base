@@ -12,15 +12,21 @@ def load_data():
     with open('../parsed_data.json', 'r', encoding='utf-8') as f:
         return json.load(f)
 
+def load_links():
+    """加载链接数据"""
+    links_file = Path('../links_data.json')
+    if links_file.exists():
+        with open(links_file, 'r', encoding='utf-8') as f:
+            return json.load(f)
+    return {}
+
 def get_period_title(filename):
     """从文件名获取期号标题"""
     # 文件名格式: 2025-01-03_09.md 或 2025-12-22_26.md
-    # 提取日期范围
     parts = filename.replace('.md', '').split('_')
     if len(parts) == 2:
         start_date = parts[0]
         end_period = parts[1]
-        # 转换日期格式
         year, month, day = start_date.split('-')
         # 计算结束日期
         if '-' in end_period:
@@ -31,13 +37,15 @@ def get_period_title(filename):
         return f"境外发行上市备案补充材料要求公示（{year}年{int(month)}月{int(day)}日—{year}年{int(month)}月{int(end_day)}日）"
     return filename
 
-def get_csrc_url(filename):
-    """根据文件名生成证监会链接"""
-    # 这需要从原始数据或之前的采集结果中获取
-    # 暂时返回空，后续可以从采集数据中补充
-    return ""
+def get_date_key_from_filename(filename):
+    """从文件名提取日期键，用于匹配链接"""
+    # 文件名格式: 2025-01-03_09.md
+    parts = filename.replace('.md', '').split('_')
+    if len(parts) >= 1:
+        return parts[0]  # 返回开始日期
+    return None
 
-def generate_year_page(year, year_data, all_raw_files):
+def generate_year_page(year, year_data, links_data):
     """生成某一年的页面"""
     
     # 统计
@@ -60,8 +68,16 @@ description: {year}年证监会境外发行上市备案补充材料要求汇总
         # 获取期号标题
         filename = Path(item.get('filepath', '')).stem
         period_title = get_period_title(filename)
+        date_key = get_date_key_from_filename(filename)
         
         content += f"""## {period_title}
+
+"""
+        
+        # 添加原文链接
+        if date_key and date_key in links_data:
+            url = links_data[date_key]['url']
+            content += f"""📎 **原文链接**：{url}
 
 """
         
@@ -94,6 +110,8 @@ def main():
     # 加载数据
     data = load_data()
     all_data = data['all_data']
+    links_data = load_links()
+    print(f"加载了 {len(links_data)} 条链接数据")
     
     # 按年份分组
     years_data = defaultdict(list)
@@ -102,10 +120,6 @@ def main():
         if year != 'Unkn':  # 跳过未知日期
             years_data[year].append(item)
     
-    # 获取原始文件列表（用于生成链接）
-    raw_data_dir = Path('../原始数据')
-    all_raw_files = list(raw_data_dir.glob('*.md')) if raw_data_dir.exists() else []
-    
     # 生成各年份页面
     output_dir = Path('../timeline')
     output_dir.mkdir(exist_ok=True)
@@ -113,7 +127,7 @@ def main():
     for year in ['2023', '2024', '2025', '2026']:
         if year in years_data:
             print(f"生成 {year} 年页面...")
-            content = generate_year_page(year, years_data[year], all_raw_files)
+            content = generate_year_page(year, years_data[year], links_data)
             output_file = output_dir / f'{year}.md'
             output_file.write_text(content, encoding='utf-8')
             print(f"  已保存: {output_file}")
