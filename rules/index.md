@@ -60,10 +60,10 @@
 
 本规则库与[补充材料要求案例库](../index.html)配套使用，可按以下维度关联查询：
 
-- [股东/实际控制人相关案例](../types/shareholders.html)
-- [股权变动/代持相关案例](../types/equity-changes.html)
-- [外汇/境外投资相关案例](../types/forex.html)
-- [合规问题相关案例](../types/compliance.html)
+- [股东/实际控制人相关案例](../types/股东-实际控制人.html)
+- [股权变动/代持相关案例](../types/股权变动-代持.html)
+- [外汇/境外投资相关案例](../types/外汇-境外投资.html)
+- [合规问题相关案例](../types/合规问题.html)
 
 ## 官方信息
 
