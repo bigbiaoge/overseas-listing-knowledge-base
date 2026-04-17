@@ -34,7 +34,7 @@ def get_period_title(filename):
         else:
             end_day = end_period
         
-        return f"补充材料要求公示（{year}年{int(month)}月{int(day)}日—{year}年{int(month)}月{int(end_day)}日）"
+        return f"（{year}年{int(month)}月{int(day)}日—{year}年{int(month)}月{int(end_day)}日）补充材料要求公示"
     return filename
 
 def get_date_key_from_filename(filename):
