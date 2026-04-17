@@ -80,9 +80,17 @@ def is_question_start(line):
     line = line.strip()
     if not line:
         return False
-    if re.match(r'^[一二三四五六七八九十]、', line):
+    # 匹配 "一、" "二、" 等格式
+    if re.match(r'^[一二三四五六七八九十]+、', line):
         return True
+    # 匹配 "一是" "二是" "三是" 等格式（星辉印刷等早期文档）
+    if re.match(r'^[一二三四五六七八九十]+是', line):
+        return True
+    # 匹配 "1." "2." 等数字格式
     if re.match(r'^\d+\.', line):
+        return True
+    # 匹配 "关于" 开头的问题行
+    if line.startswith('关于'):
         return True
     return False
 
@@ -90,12 +98,26 @@ def is_question_start(line):
 def is_problem_line(line):
     """检查是否是不带序号的问题行"""
     line = line.strip()
+    # 以"请"开头的问题
     if line.startswith('请补充') or line.startswith('请说明') or line.startswith('请列表') or line.startswith('请核查'):
         return True
+    # 以"关于"开头的问题
     if line.startswith('关于'):
         return True
+    # 包含"请你公司"或"请你"的问题
     if '请你公司' in line or '请你' in line:
         return True
+    # 以"你公司"开头的问题（单行问题格式）
+    if line.startswith('你公司') or line.startswith('你公司及') or line.startswith('你公司部分'):
+        return True
+    # 包含"请说明"的问题（可能在句子中间）
+    if '请说明' in line or '请核查' in line or '请补充' in line:
+        return True
+    # 【关键修复】纯陈述句问题格式（以句号结尾，长度适中）
+    if line.endswith('。') and len(line) > 10 and len(line) < 200:
+        # 排除明显的非问题内容
+        if not line.startswith('本周') and not line.startswith('境外发行'):
+            return True
     return False
 
 
@@ -115,6 +137,12 @@ def is_likely_question_content(line):
     if is_intro_prefix(line):
         return False
     if line.startswith('请') and '公司' in line:
+        return True
+    # 【关键修复】识别"你公司"开头的单行问题
+    if line.startswith('你公司') or line.startswith('你公司及') or line.startswith('你公司部分'):
+        return True
+    # 【关键修复】使用is_problem_line识别更多格式
+    if is_problem_line(line):
         return True
     return False
 
@@ -136,6 +164,22 @@ def is_early_company_name(line):
         return False
     if '；' in line or '。' in line:
         return False
+    
+    # 【关键修复】过滤无效公司名
+    # 1. 不应该是引导语片段
+    if '明确的法律意见' in line:
+        return False
+    if line.startswith('请你公司') or line.startswith('请你补充'):
+        return False
+    if line == '法律意见：' or line == '明确的法律意见：':
+        return False
+    
+    # 2. 如果以序号开头，去除序号后应该有有效内容
+    match = re.match(r'^[一二三四五六七八九十]+、(.+)$', line)
+    if match:
+        # 提取序号后的部分作为公司名
+        return True  # 保留，但需要在调用处处理
+    
     return True
 
 
@@ -208,6 +252,12 @@ def parse_with_intro(filepath, content):
                     j -= 1
                     continue
                 current_company = prev_line
+                
+                # 【关键修复】去除公司名中的序号前缀
+                match = re.match(r'^[一二三四五六七八九十]+、(.+)$', current_company)
+                if match:
+                    current_company = match.group(1).strip()
+                
                 break
                 j -= 1
             
@@ -219,8 +269,82 @@ def parse_with_intro(filepath, content):
                     continue
                 if is_summary_line(current_line):
                     break
+                
+                # 【关键修复】先检测混合行，再检测引导语
+                # 混合行：问题内容。 公司名（后面可能是空行+引导语）
+                hybrid_match = re.search(r'^(.+[。？！])\s+([^\s，。？！]{2,15})$', current_line)
+                if hybrid_match:
+                    question_part = hybrid_match.group(1).strip()
+                    potential_company = hybrid_match.group(2).strip()
+                    
+                    # 检查后面是否有引导语（可能跳过空行）
+                    j = i + 1
+                    while j < len(lines) and not lines[j].strip():
+                        j += 1
+                    if j < len(lines):
+                        next_line = lines[j].strip()
+                        if is_intro_prefix(next_line):
+                            # 确认是混合行：问题内容+公司名
+                            # 添加问题内容到当前公司
+                            if len(question_part) > 5:
+                                current_questions.append(question_part)
+                            # 保存当前公司
+                            companies.append({'name': current_company, 'questions': current_questions})
+                            current_company = potential_company
+                            current_questions = []
+                            # 跳过混合行、空行和引导语
+                            i = j + 1
+                            # 继续收集新公司的问题
+                            while i < len(lines):
+                                next_content = lines[i].strip()
+                                if not next_content:
+                                    i += 1
+                                    continue
+                                if is_summary_line(next_content):
+                                    break
+                                # 检查是否又是混合行
+                                sub_hybrid = re.search(r'^(.+[。？！])\s+([^\s，。？！]{2,15})$', next_content)
+                                if sub_hybrid:
+                                    sub_q = sub_hybrid.group(1).strip()
+                                    sub_comp = sub_hybrid.group(2).strip()
+                                    # 检查后面是否有引导语（可能跳过空行）
+                                    k = i + 1
+                                    while k < len(lines) and not lines[k].strip():
+                                        k += 1
+                                    if k < len(lines) and is_intro_prefix(lines[k].strip()):
+                                        if len(sub_q) > 5:
+                                            current_questions.append(sub_q)
+                                        companies.append({'name': current_company, 'questions': current_questions})
+                                        current_company = sub_comp
+                                        current_questions = []
+                                        i = k + 1
+                                        continue
+                                if is_intro_prefix(next_content):
+                                    break
+                                # 检查是否遇到下一个公司名
+                                if is_early_company_name(next_content):
+                                    # 检查后面是否有引导语
+                                    k = i + 1
+                                    while k < len(lines) and not lines[k].strip():
+                                        k += 1
+                                    if k < len(lines) and is_intro_prefix(lines[k].strip()):
+                                        break
+                                if is_question_start(next_content) or is_likely_question_content(next_content):
+                                    current_questions.append(next_content)
+                                i += 1
+                            continue
+                
+                # 检测引导语（下一个公司的开始）
                 if is_intro_prefix(current_line):
                     break
+                
+                # 【关键修复】如果遇到下一个公司名，停止当前公司的问题收集
+                if is_early_company_name(current_line):
+                    # 检查下一行是否是引导语（确认这是公司名）
+                    if i + 1 < len(lines):
+                        next_line = lines[i + 1].strip()
+                        if is_intro_prefix(next_line):
+                            break  # 是下一个公司，停止
                 if is_question_start(current_line):
                     current_questions.append(current_line)
                 elif is_likely_question_content(current_line):
@@ -267,6 +391,12 @@ def parse_early_format(filepath, content):
     companies = []
     for idx, pos in enumerate(company_positions):
         company_name = lines[pos].strip()
+        
+        # 【关键修复】去除序号前缀
+        match = re.match(r'^[一二三四五六七八九十]+、(.+)$', company_name)
+        if match:
+            company_name = match.group(1).strip()
+        
         # 确定这个公司的问题范围
         start = pos + 1  # 跳过公司名
         if idx + 1 < len(company_positions):
@@ -315,13 +445,28 @@ def parse_early_format(filepath, content):
 
 
 def parse_file(filepath):
-    """主解析函数 - 自动检测格式"""
+    """主解析函数 - 自动检测格式，支持混合格式"""
     with open(filepath, 'r', encoding='utf-8') as f:
         content = f.read()
     
     # 检测使用哪种格式
     if has_intro_format(content):
         result = parse_with_intro(filepath, content)
+        
+        # 【关键改进】如果解析数量不足，尝试用早期格式解析剩余部分
+        expected = result['expected_count']
+        actual = result['actual_count']
+        
+        if expected is not None and actual < expected:
+            # 尝试混合格式解析
+            early_result = parse_early_format(filepath, content)
+            
+            # 合并结果：只添加未识别的企业
+            existing_names = set(c['name'] for c in result['companies'])
+            for company in early_result['companies']:
+                if company['name'] not in existing_names:
+                    result['companies'].append(company)
+                    result['actual_count'] = len(result['companies'])
     else:
         result = parse_early_format(filepath, content)
     
@@ -474,7 +619,7 @@ def main():
             print(f"  预期 {w['expected']} 家, 解析 {w['actual']} 家")
             print(f"  已解析: {w['companies']}")
     
-    with open('parsed_data.json', 'w', encoding='utf-8') as f:
+    with open('website/parsed_data.json', 'w', encoding='utf-8') as f:
         json.dump({
             'all_data': all_data,
             'question_types': {k: [{'date': i['date'], 'company': i['company'], 'question': i['question']} for i in v] 
@@ -482,7 +627,7 @@ def main():
         }, f, ensure_ascii=False, indent=2)
     
     print("\n" + "=" * 70)
-    print(f"✅ 数据已保存到 parsed_data.json")
+    print(f"✅ 数据已保存到 website/parsed_data.json")
     print("=" * 70)
 
 

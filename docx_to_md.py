@@ -24,41 +24,35 @@ def get_paragraph_full_text(para):
     - Enter键：段落分隔符 (paragraph break)
     - Shift+Enter：行分隔符/软换行 (line break)
     
-    软换行应该被转换为空格或直接连接，而不是新段落
+    【关键修复】软换行应该被转换为换行符，而不是忽略！
+    因为软换行通常表示逻辑分隔（如引导语和问题之间的分隔）
     """
-    # 方法：通过XML获取完整的文本内容
     para_xml = para._element.xml
     
-    # 查找所有文本节点
-    text_parts = []
+    # 使用正则提取文本和软换行的位置
+    # 方法：按顺序提取 <w:t> 和 <w:br> 标签
     
-    # 使用正则提取所有 <w:t> 标签内容
-    t_tags = re.findall(r'<w:t[^>]*>([^<]*)</w:t>', para_xml)
+    # 构建文本片段列表，保留软换行位置
+    parts = []
     
-    # 查找是否有 <w:br/> 软换行标签
-    has_line_break = '<w:br/>' in para_xml or '<w:br ' in para_xml
+    # 匹配所有文本节点和软换行
+    # 使用更精确的正则，按出现顺序处理
+    pattern = r'<w:t[^>]*>([^<]*)</w:t>|<w:br[^/]*/>'
     
-    # 查找软换行的类型
-    line_breaks = re.findall(r'<w:br[^/]*/>', para_xml)
+    for match in re.finditer(pattern, para_xml):
+        matched = match.group(0)
+        if matched.startswith('<w:t'):
+            # 文本节点
+            text = re.search(r'<w:t[^>]*>([^<]*)</w:t>', matched).group(1)
+            parts.append(text)
+        elif '<w:br' in matched:
+            # 检查是否是软换行（不是分页符）
+            if 'type="page"' not in matched and 'type="column"' not in matched:
+                # 这是软换行，添加换行符标记
+                parts.append('\n')
     
-    # 检查是否有软换行（不是分页符）
-    soft_breaks = []
-    for br in line_breaks:
-        if 'type="line"' in br or 'type="textWrapping"' in br or 'type="wrapping"' in br:
-            soft_breaks.append(br)
-        elif 'type="page"' not in br and 'type="column"' not in br:
-            # 可能是软换行
-            if 'type=' not in br:
-                soft_breaks.append(br)
-    
-    # 获取run的属性（加粗、斜体等）
-    full_text = ''.join(t_tags)
-    
-    # 如果有软换行，需要特殊处理
-    # 软换行在输出时应该被转换为空格
-    if soft_breaks and full_text:
-        # 将软换行替换为空格
-        full_text = full_text  # 在单段落内不需要替换，因为我们已经拼接了所有文本
+    # 拼接所有部分
+    full_text = ''.join(parts)
     
     return full_text
 
@@ -143,18 +137,18 @@ def docx_to_markdown(docx_path, output_path=None):
         if not text or not text.strip():
             continue
         
-        # 清理文本
-        text = text.strip()
+        # 【关键修复】软换行产生的换行符应该保留！
+        # 不要把 \n 替换成空格，而是按换行拆分
         
-        # 移除末尾的换行符相关内容
-        text = text.replace('\n', ' ')
-        text = text.replace('\r', ' ')
+        # 按软换行拆分为多行
+        sub_lines = text.split('\n')
         
-        # 合并多个空格
-        text = re.sub(r'\s+', ' ', text)
-        
-        # 添加到结果
-        md_lines.append(text)
+        for sub_line in sub_lines:
+            sub_line = sub_line.strip()
+            if sub_line:
+                # 合并多个空格（但保留换行结构）
+                sub_line = re.sub(r'[ \t]+', ' ', sub_line)
+                md_lines.append(sub_line)
     
     # 生成markdown内容
     md_content = '\n\n'.join(md_lines)
