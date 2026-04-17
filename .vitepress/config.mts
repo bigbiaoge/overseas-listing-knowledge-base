@@ -11,6 +11,8 @@ export default defineConfig({
   cacheDir: '.vitepress/cache',
   
   head: [
+    ["script", { src: "https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js" }],
+    ["script", { src: "/statistics.js" }],
     ['link', { rel: 'icon', href: '/favicon.ico' }],
     ['meta', { name: 'author', content: 'CSRC Knowledge Base' }],
     ['meta', { property: 'og:type', content: 'website' }],
