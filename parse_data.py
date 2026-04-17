@@ -1,13 +1,13 @@
 #!/usr/bin/env python3
 """
 境外上市备案知识库解析脚本 - 最终版
-解决引导语断开、公司名识别不完整等问题
+修复引导语模式库不完整、添加错误阻断机制
+支持2023年早期格式（无引导语）
 
 关键修复：
-1. 引导语断开处理（龙电华鑫）- 跳过空行检测
-2. 问题行识别（非一、二开头的问题，如双林股份）
-3. 完整性验证
-4. 往前找公司名时跳过引导语前缀
+1. 完整的引导语模式库 - 覆盖所有高频变体
+2. 早期格式支持 - 无引导语格式
+3. 错误阻断机制 - 解析失败时停止流程
 """
 
 import re
@@ -15,20 +15,30 @@ import os
 import json
 from collections import defaultdict
 
-# ==================== 引导语模式库 ====================
+# ==================== 完整引导语模式库 ====================
+
 INTRO_FULL_PATTERNS = [
-    r'请你公司补充说明以下事项，请律师核查并出具明确的法律意见[：:]',
-    r'请你补充说明以下事项，请律师核查并出具明确的法律意见[：:]',
-    r'请你补充说明以下事项，请律师核查并明确的法律意见[：:]',
-    r'就以下事项补充说明，请律师进行核查并出具明确的法律意见[：:]',
+    r'请你公司补充说明以下事项，请律师(?:进行)?核查并出具明确的法律意见[：:。]',
+    r'请你公司就以下事项补充说明，请律师(?:进行)?核查并出具明确的法律意见[：:。]',
+    r'请你公司就以下[一二三四五六七八九十、]+事项补充说明，请律师(?:进行)?核查并出具明确的法律意见[：:。]',
+    r'请你补充说明以下事项，请律师(?:进行)?核查并出具明确的法律意见[：:。]',
+    r'请你就以下事项补充说明，请律师(?:进行)?核查并出具明确的法律意见[：:。]',
+    r'请你公司补充说明以下事项，请律师(?:进行)?核查并出具明确的法律意见$',
+    r'请你公司就以下事项补充说明，请律师(?:进行)?核查并出具明确的法律意见$',
+    r'请你公司就以下[一二三四五六七八九十、]+事项补充说明，请律师(?:进行)?核查并出具明确的法律意见$',
 ]
 COMPILED_FULL_PATTERNS = [re.compile(p, re.DOTALL) for p in INTRO_FULL_PATTERNS]
 
 INTRO_PREFIXES = [
-    r'^请你公司补充说明以下事项，请律师核查并出具明确的法律意见',
-    r'^请你补充说明以下事项，请律师核查并出具明确的法律意见',
-    r'^请你公司就以下事项补充说明，请律师进行核查并出具',
-    r'^请你补充说明以下事项，请律师进行核查并出具',
+    r'^请你公司补充说明以下事项，请律师(?:进行)?核查并出具明确的法律意见',
+    r'^请你公司就以下事项补充说明，请律师(?:进行)?核查并出具明确的法律意见',
+    r'^请你公司就以下[一二三四五六七八九十、]+事项补充说明，请律师(?:进行)?核查并出具明确的法律意见',
+    r'^请你补充说明以下事项，请律师(?:进行)?核查并出具明确的法律意见',
+    r'^请你就以下事项补充说明，请律师(?:进行)?核查并出具',
+    r'^请你公司补充说明以下事项，请律师(?:进行)?核查并出具',
+    r'^请你公司就以下事项补充说明请律师(?:进行)?核查并出具',
+    r'^请你公司就以下[一二三四五六七八九十、]+事项补充说明，请律师(?:进行)?核查并出具',
+    r'^请你补充说明以下事项，请律师(?:进行)?核查并出具',
 ]
 COMPILED_PREFIXES = [re.compile(p) for p in INTRO_PREFIXES]
 
@@ -77,16 +87,20 @@ def is_question_start(line):
     return False
 
 
-def extract_expected_count(content):
-    """从文件中提取预期企业数量"""
-    match = re.search(r'本周国际司共对(\d+)家企业', content)
-    if match:
-        return int(match.group(1))
-    return None
+def is_problem_line(line):
+    """检查是否是不带序号的问题行"""
+    line = line.strip()
+    if line.startswith('请补充') or line.startswith('请说明') or line.startswith('请列表') or line.startswith('请核查'):
+        return True
+    if line.startswith('关于'):
+        return True
+    if '请你公司' in line or '请你' in line:
+        return True
+    return False
 
 
 def is_likely_question_content(line):
-    """检查是否可能是问题内容（不以序号开头的问题，如双林股份）"""
+    """检查是否可能是问题内容"""
     line = line.strip()
     if not line:
         return False
@@ -105,16 +119,41 @@ def is_likely_question_content(line):
     return False
 
 
-def parse_file(filepath):
-    """
-    重写的解析逻辑：
-    1. 按行扫描，处理引导语断开的情况
-    2. 公司名 = 引导语前面的非空行（跳过引导语前缀）
-    3. 问题 = 从引导语后开始，直到下一个公司名或文件结束
-    """
-    with open(filepath, 'r', encoding='utf-8') as f:
-        content = f.read()
-    
+def is_early_company_name(line):
+    """判断是否像早期格式的公司名"""
+    line = line.strip()
+    if not line:
+        return False
+    if len(line) > 40:
+        return False
+    if is_summary_line(line):
+        return False
+    if is_question_start(line):
+        return False
+    if is_problem_line(line):
+        return False
+    if line.startswith('（') or line.startswith('('):
+        return False
+    if '；' in line or '。' in line:
+        return False
+    return True
+
+
+def has_intro_format(content):
+    """检测文件是否使用引导语格式"""
+    return any(pattern.search(content) for pattern in COMPILED_FULL_PATTERNS)
+
+
+def extract_expected_count(content):
+    """从文件中提取预期企业数量 - 支持国际司和国际部"""
+    match = re.search(r'本周国际[司部]共对(\d+)家企业', content)
+    if match:
+        return int(match.group(1))
+    return None
+
+
+def parse_with_intro(filepath, content):
+    """使用引导语格式解析"""
     date_match = re.search(r'[（(](\d{4})年(\d{1,2})月(\d{1,2})日.*?(\d{4})年(\d{1,2})月(\d{1,2})日[）)]', content)
     end_date = f"{date_match.group(4)}-{int(date_match.group(5)):02d}-{int(date_match.group(6)):02d}" if date_match else "Unknown"
     expected_count = extract_expected_count(content)
@@ -147,7 +186,7 @@ def parse_file(filepath):
                 j += 1
             if j < len(lines):
                 next_line = lines[j].strip()
-                if next_line == '明确的法律意见：' or next_line == '明确的法律意见:':
+                if next_line == '明确的法律意见：' or next_line == '明确的法律意见:' or next_line == '明确的法律意见。':
                     intro_match = True
                     i = j
         
@@ -194,18 +233,112 @@ def parse_file(filepath):
     if current_company:
         companies.append({'name': current_company, 'questions': current_questions})
     
-    warnings = []
-    if expected_count is not None and len(companies) != expected_count:
-        warnings.append(f"预期{expected_count}家，实际{len(companies)}家")
+    return {
+        'date': end_date,
+        'expected_count': expected_count,
+        'actual_count': len(companies),
+        'companies': companies,
+        'filepath': filepath
+    }
+
+
+def parse_early_format(filepath, content):
+    """2023年早期格式解析 - 无引导语"""
+    date_match = re.search(r'[（(](\d{4})年(\d{1,2})月(\d{1,2})日.*?(\d{4})年(\d{1,2})月(\d{1,2})日[）)]', content)
+    end_date = f"{date_match.group(4)}-{int(date_match.group(5)):02d}-{int(date_match.group(6)):02d}" if date_match else "Unknown"
+    expected_count = extract_expected_count(content)
+    
+    lines = content.split('\n')
+    
+    # 第一步：找出所有公司名位置
+    company_positions = []
+    for i, line in enumerate(lines):
+        line_stripped = line.strip()
+        if not is_early_company_name(line_stripped):
+            continue
+        # 检查是否为空行后是问题
+        if i + 2 < len(lines):
+            next1 = lines[i+1].strip()
+            next2 = lines[i+2].strip()
+            if not next1 and (is_question_start(next2) or is_problem_line(next2)):
+                company_positions.append(i)
+    
+    # 第二步：收集每个公司的所有问题
+    companies = []
+    for idx, pos in enumerate(company_positions):
+        company_name = lines[pos].strip()
+        # 确定这个公司的问题范围
+        start = pos + 1  # 跳过公司名
+        if idx + 1 < len(company_positions):
+            end = company_positions[idx + 1]  # 到下一个公司之前
+        else:
+            end = len(lines)
+        
+        # 收集这家公司的问题
+        questions = []
+        current_q = None
+        i = start
+        while i < end:
+            line = lines[i].strip()
+            if not line:
+                if current_q is not None:
+                    questions.append(current_q)
+                    current_q = None
+                i += 1
+                continue
+            
+            # 问题开始
+            if is_question_start(line) or is_problem_line(line):
+                if current_q is not None:
+                    questions.append(current_q)
+                current_q = line
+            elif current_q is not None:
+                # 问题内容延续
+                current_q += line
+            i += 1
+        
+        if current_q is not None:
+            questions.append(current_q)
+        
+        companies.append({
+            'name': company_name,
+            'questions': questions
+        })
     
     return {
         'date': end_date,
         'expected_count': expected_count,
         'actual_count': len(companies),
         'companies': companies,
-        'filepath': filepath,
-        'warnings': warnings
+        'filepath': filepath
     }
+
+
+def parse_file(filepath):
+    """主解析函数 - 自动检测格式"""
+    with open(filepath, 'r', encoding='utf-8') as f:
+        content = f.read()
+    
+    # 检测使用哪种格式
+    if has_intro_format(content):
+        result = parse_with_intro(filepath, content)
+    else:
+        result = parse_early_format(filepath, content)
+    
+    # 错误阻断验证
+    errors = []
+    if result['expected_count'] is not None and result['expected_count'] > 0 and result['actual_count'] == 0:
+        errors.append(f"预期{result['expected_count']}家企业，实际解析出0家")
+    
+    if errors:
+        raise ValueError(f"解析失败 [{os.path.basename(filepath)}]: {', '.join(errors)}")
+    
+    warnings = []
+    if result['expected_count'] is not None and result['actual_count'] != result['expected_count']:
+        warnings.append(f"预期{result['expected_count']}家，实际{result['actual_count']}家")
+    result['warnings'] = warnings
+    
+    return result
 
 
 def classify_question(question):
@@ -259,21 +392,40 @@ def main():
     data_dir = '原始数据'
     all_data = []
     all_warnings = []
+    errors = []
+    
+    print("=" * 70)
+    print("境外上市备案知识库解析开始")
+    print("=" * 70)
     
     for filename in sorted(os.listdir(data_dir)):
         if filename.endswith('.md'):
             filepath = os.path.join(data_dir, filename)
-            parsed = parse_file(filepath)
-            all_data.append(parsed)
-            if parsed['warnings']:
-                all_warnings.append({
-                    'file': filename,
-                    'warnings': parsed['warnings'],
-                    'expected': parsed['expected_count'],
-                    'actual': parsed['actual_count'],
-                    'companies': [c['name'] for c in parsed['companies']]
-                })
+            try:
+                parsed = parse_file(filepath)
+                all_data.append(parsed)
+                if parsed['warnings']:
+                    all_warnings.append({
+                        'file': filename,
+                        'warnings': parsed['warnings'],
+                        'expected': parsed['expected_count'],
+                        'actual': parsed['actual_count'],
+                        'companies': [c['name'] for c in parsed['companies']]
+                    })
+            except ValueError as e:
+                errors.append(str(e))
     
+    # 错误阻断
+    if errors:
+        print("\n" + "=" * 70)
+        print("解析失败！以下期号存在问题：")
+        print("=" * 70)
+        for err in errors:
+            print(f"  {err}")
+        print("=" * 70)
+        raise SystemExit(1)
+    
+    # 继续正常流程
     total_companies = 0
     all_questions = []
     question_types = defaultdict(list)
@@ -291,7 +443,7 @@ def main():
                 })
                 all_questions.append(q)
     
-    print("=" * 70)
+    print("\n" + "=" * 70)
     print("境外上市备案知识库解析报告")
     print("=" * 70)
     print(f"\n总条目数（公司数）: {total_companies}")
@@ -315,7 +467,7 @@ def main():
     
     if all_warnings:
         print("\n" + "=" * 70)
-        print("⚠️ 解析问题汇总:")
+        print("⚠️ 解析问题汇总（数量不匹配）:")
         print("=" * 70)
         for w in all_warnings:
             print(f"\n{w['file']}:")
@@ -330,7 +482,7 @@ def main():
         }, f, ensure_ascii=False, indent=2)
     
     print("\n" + "=" * 70)
-    print(f"数据已保存到 parsed_data.json")
+    print(f"✅ 数据已保存到 parsed_data.json")
     print("=" * 70)
 
 
