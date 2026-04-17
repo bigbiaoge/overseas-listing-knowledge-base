@@ -86,7 +86,7 @@ def extract_date_range_from_source(filepath):
 def get_title_from_date_range(date_range):
     """根据日期范围构建完整标题"""
     if date_range:
-        return f"境外发行上市备案补充材料要求公示（{date_range}）"
+        return f"（{date_range}）境外发行上市备案补充材料要求公示"
     return None
 
 

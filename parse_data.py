@@ -54,6 +54,24 @@ def is_intro_prefix(line):
     return False
 
 
+def is_consecutive_intro(lines, i):
+    """检查当前位置的引导语是否与前一行连续（用于处理连续引导语问题）"""
+    if i == 0:
+        return False
+    # 跳过空行往前找
+    j = i - 1
+    while j >= 0 and not lines[j].strip():
+        j -= 1
+    if j < 0:
+        return False
+    prev_line = lines[j].strip()
+    current_line = lines[i].strip()
+    # 如果前一行也是引导语，当前引导语可能是连续引导语
+    if is_intro_prefix(prev_line) and is_intro_prefix(current_line):
+        return True
+    return False
+
+
 def find_intro_in_text(text):
     """在文本中查找完整引导语"""
     for pattern in COMPILED_FULL_PATTERNS:
@@ -82,7 +100,16 @@ def is_question_start(line):
         return False
     # 匹配 "一、" "二、" 等格式
     if re.match(r'^[一二三四五六七八九十]+、', line):
-        return True
+        # 【关键修复】区分公司名和问题：序号后是"关于"或"请"的是问题
+        # 例如："一、图达通"是公司名，"一、关于股权架构"是问题
+        after_num = re.sub(r'^[一二三四五六七八九十]+、', '', line)
+        if after_num.startswith('关于') or after_num.startswith('请'):
+            return True
+        # 如果不是以"关于"或"请"开头，可能是公司名或长问题
+        # 检查行尾是否有标点符号，如果有则是问题的延续
+        if line.endswith('，') or line.endswith('：') or line.endswith('：') or line.endswith(','):
+            return True
+        return False
     # 匹配 "一是" "二是" "三是" 等格式（星辉印刷等早期文档）
     if re.match(r'^[一二三四五六七八九十]+是', line):
         return True
@@ -91,6 +118,23 @@ def is_question_start(line):
         return True
     # 匹配 "关于" 开头的问题行
     if line.startswith('关于'):
+        return True
+    return False
+
+
+def is_truncated_question_line(line):
+    """检查以序号开头但不是"关于"或"请"开头的行是否是截断的问题"""
+    line = line.strip()
+    if not re.match(r'^[一二三四五六七八九十]+、', line):
+        return False
+    after_num = re.sub(r'^[一二三四五六七八九十]+、', '', line)
+    if after_num.startswith('关于') or after_num.startswith('请'):
+        return False  # 这是正常的问题格式
+    # 检查是否像截断的问题（不是公司名格式）
+    # 例如："三、是否存在法律法规规定禁止持股的主体通过你公司" 是截断问题
+    # 而 "三、宜宾商业银行" 是公司名
+    # 判断方法：去掉序号后，如果内容是疑问句或陈述句格式（不是纯公司名），认为是问题
+    if len(after_num) > 5 and ('是否' in after_num or '情况' in after_num or '说明' in after_num):
         return True
     return False
 
@@ -118,7 +162,28 @@ def is_problem_line(line):
         # 排除明显的非问题内容
         if not line.startswith('本周') and not line.startswith('境外发行'):
             return True
+    # 【关键修复】识别被截断的问题（如"三、是否存在..."）
+    if is_truncated_question_line(line):
+        return True
     return False
+
+
+def clean_question_trailing_company(line, known_companies):
+    """清理问题行尾包含的公司名后缀（如'沃客非凡'问题）"""
+    line = line.strip()
+    
+    # 检查行尾是否可能是公司名（2-8个汉字，前面有逗号或句号）
+    # 例如：...计划。 沃客非凡
+    match = re.search(r'^(.+[，。])\s*([\u4e00-\u9fa5]{2,8})$', line)
+    if match:
+        potential_company = match.group(2).strip()
+        # 检查是否是已知公司名
+        for known in known_companies:
+            if known in potential_company or potential_company in known:
+                # 是公司名，从问题内容中移除
+                return match.group(1).strip()
+    
+    return line
 
 
 def is_likely_question_content(line):
@@ -152,7 +217,8 @@ def is_early_company_name(line):
     line = line.strip()
     if not line:
         return False
-    if len(line) > 40:
+    # 【关键修复】放宽公司名长度限制到60字符，支持英文全称+中文简称格式（如陆道培）
+    if len(line) > 60:
         return False
     if is_summary_line(line):
         return False
@@ -336,6 +402,10 @@ def parse_with_intro(filepath, content):
                 
                 # 检测引导语（下一个公司的开始）
                 if is_intro_prefix(current_line):
+                    # 【关键修复】跳过连续出现的引导语（如英发睿能问题）
+                    if is_consecutive_intro(lines, i):
+                        i += 1
+                        continue
                     break
                 
                 # 【关键修复】如果遇到下一个公司名，停止当前公司的问题收集
@@ -346,8 +416,16 @@ def parse_with_intro(filepath, content):
                         if is_intro_prefix(next_line):
                             break  # 是下一个公司，停止
                 if is_question_start(current_line):
+                    # 【关键修复】清理问题行尾可能包含的公司名后缀
+                    cleaned_line = clean_question_trailing_company(current_line, [current_company] if current_company else [])
+                    if cleaned_line != current_line:
+                        current_line = cleaned_line
                     current_questions.append(current_line)
                 elif is_likely_question_content(current_line):
+                    # 【关键修复】清理问题行尾可能包含的公司名后缀
+                    cleaned_line = clean_question_trailing_company(current_line, [current_company] if current_company else [])
+                    if cleaned_line != current_line:
+                        current_line = cleaned_line
                     current_questions.append(current_line)
                 i += 1
             continue
