@@ -99,3 +99,114 @@ div[class*='language-'] {
     grid-template-columns: repeat(2, 1fr) !important;
   }
 }
+
+
+/* ============================================
+   目录导航（右侧大纲）样式调整
+   ============================================ */
+
+/* 将目录移到左侧 */
+.vp-doc .aside {
+  order: -1 !important;
+  padding-left: 0 !important;
+  padding-right: 32px !important;
+}
+
+/* 目录容器样式 */
+.vp-doc .aside-cursor {
+  position: relative;
+}
+
+/* 目录标题 */
+.vp-doc .outline-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: #1a73e8;
+  margin-bottom: 12px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid #e8f0fe;
+}
+
+/* 目录列表样式 */
+.vp-doc .outline-link {
+  font-size: 13px;
+  line-height: 1.6;
+  padding: 4px 0;
+  display: block;
+  color: #5f6368;
+  text-decoration: none;
+  border-left: 2px solid transparent;
+  padding-left: 12px;
+  transition: all 0.2s ease;
+}
+
+/* 二级标题（期号）样式 */
+.vp-doc .outline-link[href^="#境外发行上市备案"] {
+  font-weight: 500;
+  color: #202124;
+  margin-top: 8px;
+}
+
+/* 三级标题（公司名）样式 */
+.vp-doc .VPDocOutlineItem ul ul .outline-link {
+  font-size: 12px;
+  color: #5f6368;
+  padding-left: 24px;
+}
+
+/* 悬停效果 */
+.vp-doc .outline-link:hover {
+  color: #1a73e8;
+  border-left-color: #1a73e8;
+  background: #f8f9fa;
+}
+
+/* 当前激活项 */
+.vp-doc .outline-link.active {
+  color: #1a73e8;
+  border-left-color: #1a73e8;
+  font-weight: 500;
+}
+
+/* 目录宽度调整 */
+@media (min-width: 1280px) {
+  .vp-doc .aside {
+    width: 280px !important;
+    max-width: 280px !important;
+  }
+  
+  .vp-doc .content-container {
+    max-width: calc(100% - 320px) !important;
+  }
+}
+
+/* 主内容区域调整 */
+.vp-doc .content {
+  padding-left: 0 !important;
+}
+
+/* 目录导航区域背景 */
+.vp-doc .aside {
+  background: #fafbfc;
+  border-radius: 8px;
+  padding: 16px !important;
+  margin-top: 24px;
+}
+
+/* 期号标题样式增强 */
+.vp-doc h2[id^="境外发行上市备案"] {
+  scroll-margin-top: 80px;
+  padding-top: 24px;
+  margin-top: 16px;
+  border-top: 1px solid #e8eaed;
+}
+
+/* 公司名标题样式 */
+.vp-doc h3 {
+  scroll-margin-top: 80px;
+  color: #1a73e8;
+  font-size: 1.1rem;
+  margin-top: 20px;
+  padding-bottom: 8px;
+  border-bottom: 1px dashed #e8eaed;
+}

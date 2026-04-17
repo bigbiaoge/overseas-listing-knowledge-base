@@ -63,14 +63,17 @@ description: {year}年证监会境外发行上市备案补充材料要求汇总
 
 """
     
-    # 按日期倒序排列
-    for item in sorted(year_data, key=lambda x: x['date'], reverse=True):
+    # 按日期倒序排列，并添加序号
+    sorted_items = sorted(year_data, key=lambda x: x['date'], reverse=True)
+    
+    for idx, item in enumerate(sorted_items, 1):
         # 获取期号标题
         filename = Path(item.get('filepath', '')).stem
         period_title = get_period_title(filename)
         date_key = get_date_key_from_filename(filename)
         
-        content += f"""## {period_title}
+        # 添加序号到标题
+        content += f"""## {idx}. {period_title}
 
 """
         

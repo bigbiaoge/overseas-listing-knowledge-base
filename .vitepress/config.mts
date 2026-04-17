@@ -139,6 +139,12 @@ export default defineConfig({
       }
     },
 
+    // 目录配置
+    outline: {
+      level: [2, 3],  // 显示二级和三级标题
+      label: '目录导航'
+    },
+
     socialLinks: [
       { icon: 'github', link: 'https://github.com' }
     ],
