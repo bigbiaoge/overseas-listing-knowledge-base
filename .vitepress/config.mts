@@ -72,7 +72,8 @@ export default defineConfig({
         ]
       },
       { text: '统计分析', link: '/statistics' },
-      { text: '更新日志', link: '/changelog' }
+      { text: '更新日志', link: '/changelog' },
+      { text: '☕ 打赏支持', link: '/sponsor' }
     ],
 
     sidebar: {
