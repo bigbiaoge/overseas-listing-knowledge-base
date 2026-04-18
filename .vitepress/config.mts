@@ -12,6 +12,7 @@ export default defineConfig({
   
   head: [
     ["script", { src: "https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js" }],
+    ["script", { async: "", src: "//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" }],
     ['link', { rel: 'icon', href: '/favicon.ico' }],
     ['meta', { name: 'author', content: 'CSRC Knowledge Base' }],
     ['meta', { property: 'og:type', content: 'website' }],
@@ -172,7 +173,7 @@ export default defineConfig({
     ],
 
     footer: {
-      message: '数据来源：中国证监会官网',
+      message: '数据来源：中国证监会官网 | 访问量：<span id="busuanzi_container_site_pv"><span id="busuanzi_value_site_pv"></span> 次</span>',
       copyright: 'Copyright © 2023-2026 境外上市备案知识库'
     }
   },
