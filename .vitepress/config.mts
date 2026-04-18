@@ -173,7 +173,7 @@ export default defineConfig({
     ],
 
     footer: {
-      message: '数据来源：中国证监会官网 | 访问量：<span id="busuanzi_container_site_pv"><span id="busuanzi_value_site_pv"></span> 次</span>',
+      message: '数据来源：中国证监会官网',
       copyright: 'Copyright © 2023-2026 境外上市备案知识库'
     }
   },
