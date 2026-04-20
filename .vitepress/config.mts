@@ -12,7 +12,6 @@ export default defineConfig({
   
   head: [
     ["script", { src: "https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js" }],
-    ["script", { async: "", src: "//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" }],
     ['link', { rel: 'icon', href: '/favicon.ico' }],
     ['meta', { name: 'author', content: 'CSRC Knowledge Base' }],
     ['meta', { property: 'og:type', content: 'website' }],

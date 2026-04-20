@@ -1,11 +1,21 @@
 <script setup>
 import DefaultTheme from 'vitepress/theme'
+import { onMounted } from 'vue'
+
 const { Layout } = DefaultTheme
+
+onMounted(() => {
+  // 动态加载不蒜子脚本
+  const script = document.createElement('script')
+  script.src = '//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js'
+  script.async = true
+  document.head.appendChild(script)
+})
 </script>
 
 <template>
   <Layout>
-    <template #doc-footer-before>
+    <template #layout-bottom>
       <div class="busuanzi-footer">
         <span>数据来源：中国证监会官网</span>
         <span class="divider">|</span>
@@ -21,7 +31,7 @@ const { Layout } = DefaultTheme
   padding: 24px 0;
   font-size: 14px;
   color: var(--vp-c-text-2);
-  border-top: 1px solid var(--vp-c-divider);
+  background: var(--vp-c-bg);
 }
 .divider {
   margin: 0 8px;
