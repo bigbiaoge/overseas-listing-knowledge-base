@@ -22,7 +22,13 @@ def load_links():
 
 def get_period_title(filename):
     """从文件名获取期号标题"""
-    # 文件名格式: 2025-01-03_09.md 或 2025-12-22_26.md
+    # 新格式: 境外发行上市备案补充材料要求公示_2026年4月13日—2026年4月17日.md
+    if '境外发行上市备案补充材料要求公示_' in filename:
+        # 提取日期部分
+        date_part = filename.replace('境外发行上市备案补充材料要求公示_', '').replace('.md', '')
+        return f"（{date_part}）补充材料要求公示"
+    
+    # 旧格式: 2025-01-03_09.md 或 2025-12-22_26.md
     parts = filename.replace('.md', '').split('_')
     if len(parts) == 2:
         start_date = parts[0]
@@ -39,7 +45,20 @@ def get_period_title(filename):
 
 def get_date_key_from_filename(filename):
     """从文件名提取日期键，用于匹配链接"""
-    # 文件名格式: 2025-01-03_09.md
+    # 新格式: 境外发行上市备案补充材料要求公示_2026年4月13日—2026年4月17日.md
+    if '境外发行上市备案补充材料要求公示_' in filename:
+        # 提取开始日期: 2026年4月13日
+        date_part = filename.replace('境外发行上市备案补充材料要求公示_', '').replace('.md', '')
+        # 提取第一个日期
+        start = date_part.split('—')[0]  # 2026年4月13日
+        # 转换为 2026-04-13 格式
+        import re
+        match = re.match(r'(\d{4})年(\d{1,2})月(\d{1,2})日', start)
+        if match:
+            return f"{match.group(1)}-{int(match.group(2)):02d}-{int(match.group(3)):02d}"
+        return None
+    
+    # 旧格式: 2025-01-03_09.md
     parts = filename.replace('.md', '').split('_')
     if len(parts) >= 1:
         return parts[0]  # 返回开始日期
